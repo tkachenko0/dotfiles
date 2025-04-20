@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Define colors
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+if [ -z "$1" ]; then
+  echo -e "${RED}Usage: $0 <branch_name>${NC}"
+  exit 1
+fi
+
+branch_name="$1"
+
+echo -e "${BLUE}Switching all Git repositories in the current folder to branch '${GREEN}$branch_name${BLUE}'...${NC}"
+
+# Loop through all directories in the current folder
+for dir in */; do
+  # Ensure it's a directory and contains a .git folder
+  if [ -d "$dir/.git" ]; then
+    echo -e "${GREEN}$dir${NC}"  # Print only the repo name
+
+    cd "$dir" || { echo -e "${RED}Failed to enter $dir. Skipping...${NC}"; continue; }
+
+    # Check if the branch exists locally or remotely
+    if git show-ref --verify --quiet "refs/heads/$branch_name" || git ls-remote --exit-code --heads origin "$branch_name" > /dev/null; then
+      git checkout "$branch_name" && git pull origin "$branch_name"
+    else
+      echo -e "${RED}Branch '$branch_name' does not exist. Skipping...${NC}"
+    fi
+
+    cd ..
+  fi
+done
+
+echo -e "${BLUE}Done!${NC}"
