@@ -149,48 +149,20 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 alias lla="lsa -la"
 alias vim="nvim"
+alias vi="nvim"
 alias graph="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias gsw="git switch"
 WIN_DIR='/mnt/c/Users/user/Downloads'
 
 kickass() {
-  git add .
-  git commit -m "${1}"
-  git push
-  echo "✅ Code keekassed to the repo."
+  git add . || { echo "❌ Failed to add files."; return 1; }
+
+  git commit -m "${1}" || { echo "❌ Commit failed. Maybe no changes to commit?"; return 1; }
+
+  git push || { echo "❌ Push failed. Check your network or branch permissions."; return 1; }
+
+  echo "🚀 Code kickassed to the repo."
 }
 
-function fizz() {
-  local -A projects
-  projects=(
-    aurora     "/home/viacheslav/aurora"
-    geopslive  "/home/viacheslav/geopslive"
-    myown      "/home/viacheslav/myown"
-    x-team-fe  "/home/viacheslav/x-team-fe"
-  )
 
-  local file
-  file=$(fzf) || { echo "Canceled."; return }
 
-  echo "Selected file: $file"
-
-  for key in "${(@k)projects}"; do
-    if [[ "$file" == *"$key/"* ]]; then
-      echo "Opening project: $key"
-      local project_path="${projects[$key]}"
-      local workspace_file
-      workspace_file=$(find "$project_path" -maxdepth 1 -name "*.code-workspace" 2>/dev/null | head -n 1)
-      if [[ -n "$workspace_file" ]]; then
-        echo "Opening workspace file: $workspace_file"
-        code -r "$workspace_file"
-      else
-        echo "No workspace file found. Opening project folder: $project_path"
-        code -r "$project_path"
-      fi
-      return
-    fi
-  done
-
-  echo "No matching project found."
-  code -r "$file"
-}
