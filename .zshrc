@@ -147,6 +147,7 @@ source <(ng completion script)
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+alias lsd="lsd --tree -A --depth 1"
 alias lla="lsa -la"
 alias vim="nvim"
 alias vi="nvim"
