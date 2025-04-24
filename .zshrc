@@ -165,4 +165,12 @@ kickass() {
 }
 
 
+# Change cursor to I-beam
+printf '\033[5 q\r'
 
+# Move prompt to the bottom
+clear() {
+  command clear
+  tput cup $((LINES - 1)) 0
+}
+tput cup $((LINES - 1)) 0
