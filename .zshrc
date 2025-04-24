@@ -152,6 +152,8 @@ alias vim="nvim"
 alias vi="nvim"
 alias graph="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias gsw="git switch"
+alias bat="batcat" 
+
 WIN_DIR='/mnt/c/Users/user/Downloads'
 
 kickass() {
