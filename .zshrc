@@ -147,12 +147,17 @@ source <(ng completion script)
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# Aliases
+alias v="nvim"
+
 alias lsd="lsd --tree -A --depth 1"
 alias lla="lsa -la"
-alias v="nvim"
-alias graph="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-alias gsw="git switch"
 alias bat="batcat" 
+
+alias gs="git status"
+alias diff="git diff"
+alias gsw="git switch"
+alias graph="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 WIN_DIR='/mnt/c/Users/user/Downloads'
 
