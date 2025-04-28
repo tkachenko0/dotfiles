@@ -149,6 +149,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Aliases
 alias v="nvim"
+alias vim="nvim"
 
 alias lsd="lsd --tree -A --depth 1"
 alias lla="lsa -la"
