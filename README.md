@@ -1,0 +1,1 @@
+- tmux installed wioth brew because apt gets not last version
