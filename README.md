@@ -1,2 +1,19 @@
 - tmux installed with brew because apt gets not last version
+
 - another usefull plugin: https://dandavison.github.io/delta/introduction.html
+  This is my configurtion:
+
+```
+[core]
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true    # use n and N to move between diff sections
+	side-by-side = true
+	hunk-header-style = omit
+	syntax-theme = Visual Studio Dark+
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+```
