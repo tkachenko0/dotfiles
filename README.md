@@ -1,1 +1,2 @@
-- tmux installed wioth brew because apt gets not last version
+- tmux installed with brew because apt gets not last version
+- another usefull plugin: https://dandavison.github.io/delta/introduction.html
