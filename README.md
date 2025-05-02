@@ -13,7 +13,5 @@
 	side-by-side = true
 	hunk-header-style = omit
 	syntax-theme = Visual Studio Dark+
-    # delta detects terminal colors automatically; set one of these to disable auto-detection
-    # dark = true
-    # light = true
+    dark = true
 ```
