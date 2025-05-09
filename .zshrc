@@ -87,11 +87,11 @@ ZSH_THEME="cloud"
 plugins=(
 	git
  	zsh-autosuggestions
-	node
-	npm
-	nvm
-	z
-	docker-compose
+  z
+	# node
+	# npm
+	# nvm
+	# docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -136,12 +136,11 @@ eval `dircolors ~/.dircolors`
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$BREW_HOME"
 
-
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # bun completions
-[ -s "/home/viacheslav/.bun/_bun" ] && source "/home/viacheslav/.bun/_bun"
+# [ -s "/home/viacheslav/.bun/_bun" ] && source "/home/viacheslav/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -174,7 +173,7 @@ kickass() {
 
 
 # Change cursor to I-beam
-printf '\033[5 q\r'
+# printf '\033[5 q\r'
 
 # Move prompt to the bottom
 # clear() {
