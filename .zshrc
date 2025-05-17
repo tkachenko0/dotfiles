@@ -143,6 +143,7 @@ alias gs="git status"
 alias diff="git diff"
 alias gsw="git switch"
 alias graph="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+alias fzff="find . -type d \( -name node_modules -o -name venv \) -prune -false -o -type f | fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
 
 WIN_DIR='/mnt/c/Users/user/Downloads'
 
@@ -156,3 +157,17 @@ kickass() {
   echo "🚀 Code kickassed to the repo."
 }
 
+# Use fzf for reverse history search
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search   # Up arrow
+bindkey "^[[B" down-line-or-beginning-search # Down arrow
+fzf-history-widget() {
+  BUFFER=$(fc -rl 1 | fzf --height 40% --reverse --tac | sed 's/^[ ]*[0-9]*[ ]*//')
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N fzf-history-widget
+bindkey '^R' fzf-history-widget
