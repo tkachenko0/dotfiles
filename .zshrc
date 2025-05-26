@@ -140,9 +140,10 @@ alias lla="lsa -la"
 alias bat="batcat" 
 
 alias gs="git status"
-alias diff="git diff"
+alias gd="git diff"
+alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias gsw="git switch"
-alias graph="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+
 alias fzff="find . -type d \( -name node_modules -o -name venv \) -prune -false -o -type f | fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
 
 WIN_DIR='/mnt/c/Users/user/Downloads'
