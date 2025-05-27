@@ -140,7 +140,7 @@ alias lla="lsa -la"
 alias bat="batcat" 
 
 alias gs="git status"
-alias gd="git diff"
+alias diff="git diff"
 alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias gsw="git switch"
 
@@ -172,3 +172,4 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
+
