@@ -150,11 +150,8 @@ WIN_DIR='/mnt/c/Users/user/Downloads'
 
 kickass() {
   git add . || { echo "❌ Failed to add files."; return 1; }
-
   git commit -m "${1}" || { echo "❌ Commit failed. Maybe no changes to commit?"; return 1; }
-
   git push || { echo "❌ Push failed. Check your network or branch permissions."; return 1; }
-
   echo "🚀 Code kickassed to the repo."
 }
 
@@ -172,4 +169,3 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
-
