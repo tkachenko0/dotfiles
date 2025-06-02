@@ -127,10 +127,6 @@ export PATH="$PATH:$BREW_HOME"
 # bun completions
 # [ -s "/home/viacheslav/.bun/_bun" ] && source "/home/viacheslav/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
 # Aliases
 alias v="nvim"
 alias vim="nvim"
