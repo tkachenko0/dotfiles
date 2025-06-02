@@ -76,7 +76,7 @@ ZSH_THEME="cloud"
 plugins=(
 	git
  	zsh-autosuggestions
-  z
+        z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -169,3 +169,5 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
+
+
