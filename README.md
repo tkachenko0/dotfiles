@@ -15,3 +15,11 @@
 	syntax-theme = Visual Studio Dark+
     dark = true
 ```
+
+```
+# From https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
+apt install zsh
+
+# From https://ohmyz.sh/
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
