@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Fuzzy select microservice folders
-selected=$(find ~/projects/*/* -maxdepth 0 -type d | fzf)
+selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf)
 
 [[ -z $selected ]] && exit 0
 
@@ -34,3 +34,4 @@ if [[ -n $TMUX ]]; then
 else
     tmux attach-session -t "$project_name"
 fi
+

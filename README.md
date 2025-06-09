@@ -6,6 +6,11 @@
   This is my configurtion:
 
 ```bash
+ ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
+
+```
+
+```bash
 # config for delta (the tool to view diffs with git diff)
 [core]
     pager = delta
