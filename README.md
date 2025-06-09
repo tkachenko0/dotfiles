@@ -7,7 +7,8 @@
 
 ```bash
  ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
-
+ sudo ln -s ~/dev/personal/dotfiles/usr/local/bin/tmux-sessionizer /usr/local/bin/tmux-sessionizer
+ ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
 ```
 
 ```bash
