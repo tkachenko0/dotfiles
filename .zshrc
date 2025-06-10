@@ -19,7 +19,6 @@ export PATH="$PATH:$BREW_HOME"
 
 alias v="nvim"
 alias vim="nvim"
-alias lsd="lsd --tree -A --depth 1"
 alias lla="lsa -la"
 alias bat="batcat" 
 alias gs="git status"
