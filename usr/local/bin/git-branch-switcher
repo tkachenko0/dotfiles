@@ -1,0 +1,9 @@
+#!/bin/bash
+# git-fuzzy-branch.sh
+
+branch=$(git branch --all | grep -v HEAD | sed 's/remotes\/origin\///' | sort -u | fzf)
+
+if [ -n "$branch" ]; then
+  git checkout "$branch"
+fi
+

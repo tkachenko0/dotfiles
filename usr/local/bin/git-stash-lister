@@ -1,0 +1,14 @@
+#!/bin/bash
+# git-stash-fzf.sh
+
+stash=$(git stash list | fzf)
+[[ -z "$stash" ]] && exit 0
+index=$(echo "$stash" | awk -F: '{print $1}' | sed 's/stash@{//;s/}//')
+
+git stash show -p "stash@{$index}" | less
+read -p "Apply this stash? (y/N): " confirm
+
+if [[ "$confirm" == "y" ]]; then
+  git stash apply "stash@{$index}"
+fi
+
