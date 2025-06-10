@@ -30,14 +30,6 @@ alias gs="git status"
 alias diff="git diff"
 alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 alias gsw="git switch"
-alias fzff="find . -type d \( -name node_modules -o -name venv \) -prune -false -o -type f | fzf --preview 'batcat --color=always --style=numbers --line-range=:500 {}'"
-
-kickass() {
-  git add . || { echo "❌ Failed to add files."; return 1; }
-  git commit -m "${1}" || { echo "❌ Commit failed. Maybe no changes to commit?"; return 1; }
-  git push || { echo "❌ Push failed. Check your network or branch permissions."; return 1; }
-  echo "🚀 Code kickassed to the repo."
-}
 
 # Use fzf for reverse history search
 autoload -U up-line-or-beginning-search

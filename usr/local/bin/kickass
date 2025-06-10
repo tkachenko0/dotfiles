@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# ANSI color codes
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+NC="\033[0m" # No Color
+
+if [ -z "$1" ]; then
+  echo -e "${RED}ERROR:${NC} Please provide a commit message."
+  echo "Usage: ./git-kickass.sh \"your commit message\""
+  exit 1
+fi
+
+git add . || { echo -e "${RED}ERROR:${NC} Failed to add files."; exit 1; }
+git commit -m "$1" || { echo -e "${RED}ERROR:${NC} Commit failed. Maybe no changes to commit?"; exit 1; }
+git push || { echo -e "${RED}ERROR:${NC} Push failed. Check your network or branch permissions."; exit 1; }
+echo -e "${GREEN}SUCCESS:${NC} Code pushed to the repo."

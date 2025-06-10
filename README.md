@@ -12,13 +12,15 @@ ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
 # tmux
 ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
 
-# tmux-sessionizer
+# scripts
 sudo ln -s ~/dev/personal/dotfiles/usr/local/bin/tmux-sessionizer /usr/local/bin/tmux-sessionizer
 chmod +x /usr/local/bin/tmux-sessionizer
 
-# pullmaster
 sudo ln -s ~/dev/personal/dotfiles/usr/local/bin/pullmaster /usr/local/bin/pullmaster
 chmod +x /usr/local/bin/pullmaster
+
+sudo ln -s ~/dev/personal/dotfiles/usr/local/bin/kickass /usr/local/bin/kickass
+chmod +x /usr/local/bin/kickass
 ```
 
 ```bash
