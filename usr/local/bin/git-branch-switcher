@@ -1,9 +1,22 @@
 #!/bin/bash
-# git-fuzzy-branch.sh
 
-branch=$(git branch --all | grep -v HEAD | sed 's/remotes\/origin\///' | sort -u | fzf)
+# Ensure we're in a git repository
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "Not inside a git repository."
+  exit 1
+fi
 
-if [ -n "$branch" ]; then
+# Use fzf to select a branch (local + remote, excluding HEAD)
+branch=$(git branch -a --sort=-committerdate | grep -v '\->' | sed 's/^..//' | fzf --prompt="Select branch: ")
+
+# Exit if no branch selected
+[ -z "$branch" ] && echo "No branch selected." && exit 1
+
+# If it's a remote branch, strip 'remotes/' prefix and check out locally
+if [[ "$branch" == remotes/* ]]; then
+  remote_branch="${branch#remotes/}"
+  git checkout --track "$remote_branch"
+else
   git checkout "$branch"
 fi
 
