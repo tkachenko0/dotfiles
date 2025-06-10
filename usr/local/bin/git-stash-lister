@@ -1,8 +1,7 @@
 #!/bin/bash
 
-stash=$(git stash list | fzf)
+stash=$(git stash list | sed 's/:.*://' | fzf)
 [[ -z "$stash" ]] && exit 0
 index=$(echo "$stash" | awk -F: '{print $1}' | sed 's/stash@{//;s/}//')
-
 git stash apply "stash@{$index}"
 
