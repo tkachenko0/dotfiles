@@ -19,8 +19,8 @@ chmod +x /usr/local/bin/tmux-sessionizer
 sudo ln -s ~/dev/personal/dotfiles/usr/local/bin/git-pullmaster /usr/local/bin/git-pullmaster
 chmod +x /usr/local/bin/git-pullmaster
 
-sudo ln -s ~/dev/personal/dotfiles/usr/local/bin/git-kickasser /usr/local/bin/git-kickasser
-chmod +x /usr/local/bin/git-kickasser
+sudo ln -s ~/dev/personal/dotfiles/usr/local/bin/kickass /usr/local/bin/kickass
+chmod +x /usr/local/bin/kickass
 
 sudo ln -s ~/dev/personal/dotfiles/usr/local/bin/git-branch-switcher /usr/local/bin/git-branch-switcher
 chmod +x /usr/local/bin/git-branch-switcher
