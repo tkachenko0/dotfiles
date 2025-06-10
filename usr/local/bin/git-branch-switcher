@@ -6,20 +6,17 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   exit 1
 fi
 
-# Get list of stashes
-stash=$(git stash list | fzf --prompt="Select stash: ")
+# Use fzf to select a branch (local + remote, excluding HEAD)
+branch=$(git branch -a --sort=-committerdate | grep -v '\->' | sed 's/^..//' | fzf --prompt="Select branch: ")
 
-# Exit if no stash selected
-[ -z "$stash" ] && echo "No stash selected." && exit 1
+# Exit if no branch selected
+[ -z "$branch" ] && echo "No branch selected." && exit 1
 
-# Extract the stash reference (e.g., stash@{0})
-stash_ref=$(echo "$stash" | awk -F: '{print $1}')
-
-# Ask whether to apply or pop
-action=$(printf "apply\npop" | fzf --prompt="Apply or pop stash: ")
-
-[ -z "$action" ] && echo "No action selected." && exit 1
-
-# Perform the action
-git stash "$action" "$stash_ref"
+# If it's a remote branch, strip 'remotes/' prefix and check out locally
+if [[ "$branch" == remotes/* ]]; then
+  remote_branch="${branch#remotes/}"
+  git checkout --track "$remote_branch"
+else
+  git checkout "$branch"
+fi
 
