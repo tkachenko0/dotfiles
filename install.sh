@@ -11,7 +11,26 @@ apt install -y fzf
 apt install -y curl
 apt install -y gcc
 apt install -y git # ensure the latest git is installed to make neovim Diffview plugin work
-apt install -y make build-essential libssl-dev zlib1g-dev
+apt install -y make build-essential procps curl libssl-dev zlib1g-dev
+
+# Git
+git config --global user.name "viacheslav.tkachenko"
+git config --global user.email "t.viacheslav00@gmail.com"
+git config --global init.defaultBranch main
+git config --global core.pager "delta"
+git config --global core.editor "nvim"
+git config --global interactive.diffFilter "delta --color-only"
+git config --global delta.navigate true
+git config --global delta.side-by-side true
+git config --global delta.hunk-header-style omit
+git config --global delta.syntax-theme "Visual Studio Dark+"
+git config --global delta.dark true
+
+# Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Delta (diff viewer)
+brew install git-delta
 
 # Clone dotfiles repository
 DOTFILES_DIR=~/dev/personal/dotfiles
@@ -37,7 +56,7 @@ rm ~/.zshrc
 ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
 
 # Tmux
-apt install -y tmux
+brew install tmux
 ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
 
 # Node.js and npm and nvm
