@@ -11,6 +11,7 @@ apt install -y fzf
 apt install -y curl
 apt install -y gcc
 apt install -y git # ensure the latest git is installed to make neovim Diffview plugin work
+apt install -y make build-essential libssl-dev zlib1g-dev
 
 # Clone dotfiles repository
 DOTFILES_DIR=~/dev/personal/dotfiles
@@ -43,8 +44,14 @@ ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 nvm install --lts
 
+# Python and pyenv
+curl -fsSL https://pyenv.run | bash
+pyenv install 3.12.3
+pyenv global 3.12.3
+
 # Neovim
 apt install -y ripgrep
+apt install -y luarocks
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 rm -rf /opt/nvim
 tar -C /opt -xzf nvim-linux-x86_64.tar.gz
