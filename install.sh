@@ -1,44 +1,52 @@
 #!/bin/bash
 
-set -e
+apt update
+apt upgrade -y
 
-DOTFILES_DIR=~/dev/personal/dotfiles
-NEOVIM_DIR=~/.config/nvim
-
-echo "==> Updating and installing required packages..."
-sudo apt update
-sudo apt install -y zsh tmux fzf curl git
-
-echo "==> Cloning dotfiles repo..."
 mkdir -p ~/dev/personal
-if [ ! -d "$DOTFILES_DIR" ]; then
-  git clone https://github.com/tkachenko0/dotfiles.git "$DOTFILES_DIR"
-else
-  cd "$DOTFILES_DIR" && git pull
-fi
+mkdir ~/.config
 
-echo "==> Installing Oh My Zsh..."
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-fi
+# Base packages
+apt install -y fzf
+apt install -y curl
+apt install -y gcc
+apt install -y git # ensure the latest git is installed to make neovim Diffview plugin work
 
-echo "==> Linking dotfiles..."
-ln -sf "$DOTFILES_DIR/.zshrc" ~/.zshrc
-ln -sf "$DOTFILES_DIR/.tmux.conf" ~/.tmux.conf
+# Clone dotfiles repository
+DOTFILES_DIR=~/dev/personal/dotfiles
+git clone https://github.com/tkachenko0/dotfiles.git "$DOTFILES_DIR"
 
-echo "==> Setting zsh as default shell..."
+## Scripts
+ln -s ~/dev/personal/dotfiles/usr/local/bin/tmux-sessionizer /usr/local/bin/tmux-sessionizer
+ln -s ~/dev/personal/dotfiles/usr/local/bin/git-pullmaster /usr/local/bin/git-pullmaster
+ln -s ~/dev/personal/dotfiles/usr/local/bin/kickass /usr/local/bin/kickass
+ln -s ~/dev/personal/dotfiles/usr/local/bin/git-branch-switcher /usr/local/bin/git-branch-switcher
+ln -s ~/dev/personal/dotfiles/usr/local/bin/git-stash-lister /usr/local/bin/git-stash-lister
+chmod +x /usr/local/bin/tmux-sessionizer
+chmod +x /usr/local/bin/git-pullmaster
+chmod +x /usr/local/bin/kickass
+chmod +x /usr/local/bin/git-branch-switcher
+chmod +x /usr/local/bin/git-stash-lister
+
+# Zsh
+apt install -y zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 chsh -s "$(which zsh)"
+rm ~/.zshrc
+ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
 
-echo "==> Installing pullmaster script..."
-sudo ln -sf "$DOTFILES_DIR/usr/local/bin/pullmaster" /usr/local/bin/pullmaster
-chmod +x "$DOTFILES_DIR/usr/local/bin/pullmaster"
+# Tmux
+apt install -y tmux
+ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
 
-echo "==> Cloning Neovim config..."
-if [ ! -d "$NEOVIM_DIR" ]; then
-  git clone https://github.com/tkachenko0/nvim.git "$NEOVIM_DIR"
-else
-  cd "$NEOVIM_DIR" && git pull
-fi
+# Node.js and npm and nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+nvm install --lts
 
-echo "✅ Done! Reboot or log out and back in to apply zsh as default shell."
+# Neovim
+apt install -y ripgrep
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+rm -rf /opt/nvim
+tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
+git clone https://github.com/tkachenko0/nvim.git ~/.config/nvim

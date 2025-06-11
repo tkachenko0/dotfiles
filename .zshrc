@@ -17,6 +17,12 @@ export NVM_DIR="$HOME/.nvm"
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$BREW_HOME"
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 bindkey -s '^F' 'tmux-sessionizer\n'        
 bindkey -s '^B' 'git-branch-switcher\n'     
 bindkey -s '^P' 'git-pullmaster\n'          
@@ -45,3 +51,4 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
+
