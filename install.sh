@@ -3,8 +3,6 @@
 apt update
 apt upgrade -y
 
-NONINTERACTIVE=1
-
 # Base packages
 apt install -y fzf
 apt install -y curl
@@ -19,6 +17,7 @@ git config --global init.defaultBranch main
 git config --global core.editor "nvim"
 
 # Homebrew
+NONINTERACTIVE=1 \
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Delta (diff viewer)
@@ -27,8 +26,8 @@ git config --global core.pager "delta"
 git config --global interactive.diffFilter "delta --color-only"
 git config --global delta.navigate true
 git config --global delta.side-by-side true
-git config --global delta.hunk-header-style omit
 git config --global delta.syntax-theme "Visual Studio Dark+"
+git config --global delta.hunk-header-style omit
 git config --global delta.dark true
 
 ## Scripts
@@ -64,11 +63,10 @@ curl -fsSL https://pyenv.run | bash
 pyenv install 3.12.3
 pyenv global 3.12.3
 
-brew insall pyenv
-
 # Neovim
 apt install -y ripgrep
 apt install -y luarocks
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 rm -rf /opt/nvim
 tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
