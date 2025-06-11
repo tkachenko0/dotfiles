@@ -57,11 +57,13 @@ ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
 # Node.js and npm and nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 nvm install --lts
+source ~/.zshrc
 
 # Python and pyenv
 curl -fsSL https://pyenv.run | bash
 pyenv install 3.12.3
 pyenv global 3.12.3
+source ~/.zshrc
 
 # Neovim
 apt install -y ripgrep
