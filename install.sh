@@ -3,8 +3,7 @@
 apt update
 apt upgrade -y
 
-mkdir -p ~/dev/personal
-mkdir ~/.config
+NONINTERACTIVE=1
 
 # Base packages
 apt install -y fzf
@@ -17,24 +16,20 @@ apt install -y make build-essential procps curl libssl-dev zlib1g-dev
 git config --global user.name "viacheslav.tkachenko"
 git config --global user.email "t.viacheslav00@gmail.com"
 git config --global init.defaultBranch main
-git config --global core.pager "delta"
 git config --global core.editor "nvim"
-git config --global interactive.diffFilter "delta --color-only"
-git config --global delta.navigate true
-git config --global delta.side-by-side true
-git config --global delta.hunk-header-style omit
-git config --global delta.syntax-theme "Visual Studio Dark+"
-git config --global delta.dark true
 
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Delta (diff viewer)
 brew install git-delta
-
-# Clone dotfiles repository
-DOTFILES_DIR=~/dev/personal/dotfiles
-git clone https://github.com/tkachenko0/dotfiles.git "$DOTFILES_DIR"
+git config --global core.pager "delta"
+git config --global interactive.diffFilter "delta --color-only"
+git config --global delta.navigate true
+git config --global delta.side-by-side true
+git config --global delta.hunk-header-style omit
+git config --global delta.syntax-theme "Visual Studio Dark+"
+git config --global delta.dark true
 
 ## Scripts
 ln -s ~/dev/personal/dotfiles/usr/local/bin/tmux-sessionizer /usr/local/bin/tmux-sessionizer
@@ -54,9 +49,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 chsh -s "$(which zsh)"
 rm ~/.zshrc
 ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
+source ~/.zshrc
 
 # Tmux
-brew install tmux
+apt -y install tmux
 ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
 
 # Node.js and npm and nvm
@@ -68,11 +64,11 @@ curl -fsSL https://pyenv.run | bash
 pyenv install 3.12.3
 pyenv global 3.12.3
 
+brew insall pyenv
+
 # Neovim
 apt install -y ripgrep
 apt install -y luarocks
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 rm -rf /opt/nvim
 tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-
-git clone https://github.com/tkachenko0/nvim.git ~/.config/nvim
