@@ -8,22 +8,18 @@ MAX_DEPTH=2
 
 declare -A unique_repos
 
-# 1. Add current git root if inside a git repo
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     current_git_root=$(git rev-parse --show-toplevel)
     unique_repos["$current_git_root"]=1
 fi
 
-# 2. Find other repos (excluding the current root)
 while IFS= read -r gitdir; do
     repo_dir=$(realpath "$(dirname "$gitdir")")
-    # Skip if it's the same as the current git root
     if [[ "$repo_dir" != "$current_git_root" ]]; then
         unique_repos["$repo_dir"]=1
     fi
 done < <(find . -maxdepth "$MAX_DEPTH" -type d -name ".git")
 
-# 3. Pull each unique repo
 for repo_dir in "${!unique_repos[@]}"; do
     cd "$repo_dir" || continue
 
