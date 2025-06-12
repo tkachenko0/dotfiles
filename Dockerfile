@@ -15,6 +15,6 @@ RUN git clone https://github.com/tkachenko0/dotfiles.git /root/dev/personal/dotf
 RUN git clone https://github.com/tkachenko0/nvim.git /root/.config/nvim 
 
 RUN chmod +x /root/dev/personal/dotfiles/install.sh 
-RUN /root/dev/personal/dotfiles/install.sh 
+RUN /root/dev/personal/dotfiles/bootstrap.sh 
 
 CMD ["zsh"]
