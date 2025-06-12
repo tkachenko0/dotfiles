@@ -1,30 +1,28 @@
 #!/usr/bin/env bash
 
-selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf)
+BASE_PATH="${DEV_PROJECTS_DIR:-$HOME/dev}"
 
-[[ -z $selected ]] && exit 0
+selected=$(find "$BASE_PATH"/*/* -maxdepth 0 -type d 2>/dev/null | fzf --exit-0)
 
-project_dir=$(dirname "$selected")
-project_name=$(basename "$project_dir" | tr . _)
+[[ -z "$selected" ]] && exit 0
 
+project_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+if [[ -z "$TMUX" ]] && [[ -z "$tmux_running" ]]; then
     tmux new-session -s "$project_name" -c "$selected"
     exit 0
 fi
 
 if ! tmux has-session -t "$project_name" 2>/dev/null; then
     tmux new-session -ds "$project_name" -c "$selected"
-else
-    if ! tmux list-windows -t "$project_name" -F "#{window_active}:#{pane_current_path}" | grep -q "$selected"; then
-        tmux new-window -t "$project_name:" -c "$selected"
-    fi
+elif ! tmux list-windows -t "$project_name" -F "#{pane_current_path}" | grep -qx "$selected"; then
+    tmux new-window -t "$project_name:" -c "$selected"
 fi
 
-if [[ -n $TMUX ]]; then
+if [[ -n "$TMUX" ]]; then
     tmux switch-client -t "$project_name"
-    tmux select-window -t "$project_name:" -c "$selected"
+    tmux select-window -t "$project_name:"
 else
     tmux attach-session -t "$project_name"
 fi
