@@ -36,11 +36,14 @@ ln -s ~/dev/personal/dotfiles/usr/local/bin/git-pullmaster /usr/local/bin/git-pu
 ln -s ~/dev/personal/dotfiles/usr/local/bin/kickass /usr/local/bin/kickass
 ln -s ~/dev/personal/dotfiles/usr/local/bin/git-branch-switcher /usr/local/bin/git-branch-switcher
 ln -s ~/dev/personal/dotfiles/usr/local/bin/git-stash-lister /usr/local/bin/git-stash-lister
+ln -s ~/dev/personal/dotfiles/usr/local/bin/git-multiproj-branch-switcher /usr/local/bin/git-multiproj-branch-switcher
+
 chmod +x /usr/local/bin/tmux-sessionizer
 chmod +x /usr/local/bin/git-pullmaster
 chmod +x /usr/local/bin/kickass
 chmod +x /usr/local/bin/git-branch-switcher
 chmod +x /usr/local/bin/git-stash-lister
+chmod +x /usr/local/bin/git-multiproj-branch-switcher
 
 # Zsh
 apt install -y zsh

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Colors
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+MAX_DEPTH=2
+
+# Check for argument
+if [[ -z "$1" ]]; then
+    echo -e "${RED}Usage: $0 <branch-name>${NC}"
+    exit 1
+fi
+
+branch="$1"
+declare -A unique_repos
+
+# If inside a Git repo, add it
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    current_git_root=$(git rev-parse --show-toplevel)
+    unique_repos["$current_git_root"]=1
+fi
+
+# Find other Git repos up to MAX_DEPTH
+while IFS= read -r gitdir; do
+    repo_dir=$(realpath "$(dirname "$gitdir")")
+    if [[ "$repo_dir" != "$current_git_root" ]]; then
+        unique_repos["$repo_dir"]=1
+    fi
+done < <(find . -maxdepth "$MAX_DEPTH" -type d -name ".git")
+
+# Loop over each repo and switch branches
+for repo_dir in "${!unique_repos[@]}"; do
+    cd "$repo_dir" || continue
+
+    repo_name=$(basename "$repo_dir")
+    current_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+    echo -e "Switching ${BLUE}${repo_name}${NC} from branch ${GREEN}${current_branch}${NC} to ${GREEN}${branch}${NC}"
+
+    git fetch
+
+    if git show-ref --verify --quiet "refs/heads/$branch"; then
+        git checkout "$branch"
+    elif git ls-remote --exit-code --heads origin "$branch" &> /dev/null; then
+        git checkout -b "$branch" "origin/$branch"
+    else
+        echo -e "${BLUE}${repo_name}${NC}: ❌ Branch '${branch}' does not exist locally or remotely."
+    fi
+
+    cd - > /dev/null || exit 1
+done
+
