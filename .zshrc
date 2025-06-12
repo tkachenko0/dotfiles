@@ -3,9 +3,9 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="cloud"
 
 plugins=(
-	git
- 	zsh-autosuggestions
-        z
+  git
+  zsh-autosuggestions
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
