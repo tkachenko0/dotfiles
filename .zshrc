@@ -3,7 +3,6 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="cloud"
 
 plugins=(
-  git
   zsh-autosuggestions
   z
 )
@@ -29,6 +28,7 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Git aliases
 alias gs="git status"
+alias grs="git restore . && git status"
 alias gc="git commit -m"
 alias gsw="git switch"
 alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
