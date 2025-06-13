@@ -79,4 +79,4 @@ apt install -y luarocks
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 rm -rf /opt/nvim
 tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-ln -s ~/dev/personal/dotfiles/.config/nvim ~/.config/nvim
+ln -s ~/dev/personal/dotfiles/nvim ~/.config/nvim
