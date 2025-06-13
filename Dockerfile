@@ -10,7 +10,7 @@ RUN apt install -y git
 RUN mkdir -p ~/dev/personal 
 RUN mkdir -p ~/.config 
 
-RUN git clone https://github.com/tkachenko0/dotfiles.git /root/dev/personal/dotfiles 
+RUN git clone https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles 
 
 RUN chmod +x ~/dev/personal/dotfiles/bootstrap.sh 
 RUN ~/dev/personal/dotfiles/bootstrap.sh 
