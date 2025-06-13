@@ -5,16 +5,14 @@ SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update
 RUN apt-get upgrade -y 
-
-RUN mkdir -p /root/dev/personal 
-RUN mkdir -p /root/.config 
-
 RUN apt install -y git
 
-RUN git clone https://github.com/tkachenko0/dotfiles.git /root/dev/personal/dotfiles 
-RUN git clone https://github.com/tkachenko0/nvim.git /root/.config/nvim 
+RUN mkdir -p ~/dev/personal 
+RUN mkdir -p ~/.config 
 
-RUN chmod +x /root/dev/personal/dotfiles/install.sh 
-RUN /root/dev/personal/dotfiles/bootstrap.sh 
+RUN git clone --recurse-submodules https://github.com/tkachenko0/dotfiles.git /root/dev/personal/dotfiles 
+
+RUN chmod +x ~/dev/personal/dotfiles/bootstrap.sh 
+RUN ~/dev/personal/dotfiles/bootstrap.sh 
 
 CMD ["zsh"]
