@@ -4,6 +4,7 @@ ZSH_THEME="cloud"
 
 plugins=(
   zsh-autosuggestions
+  zsh-syntax-highlighting
   z
 )
 
