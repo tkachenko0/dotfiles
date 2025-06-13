@@ -11,7 +11,7 @@ You can find the base Docker image in the `./Dockerfile` and the setup steps in 
 To test the setup inside a Docker container, you can use the provided Dockerfile. This will create a container with all the necessary tools and configurations pre-installed.
 
 ```bash
-build -t test-dev .
+docker build -t test-dev .
 ```
 
 Then run the container with:
