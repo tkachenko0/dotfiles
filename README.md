@@ -6,22 +6,18 @@ This repository contains my personal dotfiles and development environment setup.
 
 You can find the base Docker image in the `./Dockerfile` and the setup steps in the `./bootstrap.sh` script.
 
-## Bootstrap Instructions
+## Bootstrap Instructions to Test inside Docker
 
-To set up your environment (requires `sudo` if not inside a Docker container), run:
+To test the setup inside a Docker container, you can use the provided Dockerfile. This will create a container with all the necessary tools and configurations pre-installed.
 
 ```bash
-apt-get update
-apt-get upgrade -y
-apt install -y git
+build -t test-dev .
+```
 
-mkdir -p ~/dev/personal
-mkdir -p ~/.config
+Then run the container with:
 
-git clone https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
-
-chmod +x ~/dev/personal/dotfiles/bootstrap
-~/dev/personal/dotfiles/bootstrap
+```bash
+docker run --rm -it --name test-config test-dev
 ```
 
 ## Neovim Configuration
