@@ -107,8 +107,13 @@ return {
 
         vim.keymap.set('v', '<leader>f', function()
             local selection = get_visual_selection()
-            builtin.live_grep({ default_text = selection })
-        end, { desc = 'Live grep selected text' })
+            builtin.live_grep({
+                default_text = selection,
+                additional_args = function()
+                    return { '--ignore-case' }
+                end,
+            })
+        end, { desc = 'Live grep selected text (case insensitive)' })
 
         vim.keymap.set('v', '<leader>F', function()
             local selection = get_visual_selection()
