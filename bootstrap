@@ -17,7 +17,7 @@ git config --global user.name "viacheslav.tkachenko"
 git config --global user.email "t.viacheslav00@gmail.com"
 git config --global init.defaultBranch main
 git config --global core.editor "nvim"
-# git config --global pull.rebase true
+git config --global pull.rebase true
 
 # Zsh
 apt install -y zsh
@@ -25,7 +25,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 chsh -s "$(which zsh)"
 rm ~/.zshrc
 ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
-source ~/.zshrc
 # https://github.com/zsh-users/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # https://github.com/zsh-users/zsh-syntax-highlighting
