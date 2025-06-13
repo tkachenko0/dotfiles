@@ -12,7 +12,7 @@ RUN mkdir -p ~/.config
 
 RUN git clone https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles 
 
-RUN chmod +x ~/dev/personal/dotfiles/bootstrap.sh 
-RUN ~/dev/personal/dotfiles/bootstrap.sh 
+RUN chmod +x ~/dev/personal/dotfiles/bootstrap
+RUN ~/dev/personal/dotfiles/bootstrap
 
 CMD ["zsh"]

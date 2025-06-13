@@ -1,9 +1,12 @@
 # Dotfiles
 
-See the `./Dockerfile` for the base image or the `./bootstrap.sh` script for the installation steps.
+This repository contains my personal dotfiles and development environment setup.
 
-To bootstrap your environment, you can run the following commands.
-If not inside a Docker container, with sudo privileges.
+You can find the base Docker image in the `./Dockerfile` and the setup steps in the `./bootstrap.sh` script.
+
+## Bootstrap Instructions
+
+To set up your environment (requires `sudo` if not inside a Docker container), run:
 
 ```bash
 apt-get update
@@ -15,8 +18,8 @@ mkdir -p ~/.config
 
 git clone https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
 
-chmod +x ~/dev/personal/dotfiles/bootstrap.sh
-~/dev/personal/dotfiles/bootstrap.sh
+chmod +x ~/dev/personal/dotfiles/bootstrap
+~/dev/personal/dotfiles/bootstrap
 ```
 
 ## Neovim Configuration
@@ -27,25 +30,29 @@ This is my personal Neovim setup, heavily inspired by [ThePrimeagen's](https://g
 
 A fast, modular Neovim configuration powered by lazy.nvim. Features full TypeScript development support with Prettier and ESLint integration, git status with Gitsigns, environment variable hiding with Cloak, advanced search with Telescope, powerful syntax highlighting with Treesitter, diagnostics with Trouble, session management with Undotree, fast navigation with Harpoon, and more.
 
-![image](https://github.com/user-attachments/assets/5f1fb7a1-b763-476b-8b59-a0e6986d4371)
-
-### Installation
-
-This is part of my dotiles and rc files.
-
-The repo for installing all my dotfiles is available at [dotiles](https://github.com/tkachenko0/dotfiles).
-
 ## Zsh
+
+Custom `~/.zshrc` with plugins and theming using [oh-my-zsh](https://ohmyz.sh/), syntax highlighting, autosuggestions, and more.
 
 ## Tmux
 
+Includes a configured `~/.tmux.conf` for a terminal multiplexing experience with custom keybindings and visuals.
+
 ## Node.js, nvm and npm
+
+Used for Node.js version management, with setup for installing and using the latest LTS version.
 
 ## Pyenv
 
+Used to manage Python versions easily and reproducibly across projects.
+
 ## Brew
 
+Used to manage packages
+
 ## Custom scripts
+
+Custom CLI scripts are available in `/usr/local/bin` and include utilities for development, git, system tweaks, etc.
 
 ## Inspirations
 
