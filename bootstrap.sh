@@ -75,4 +75,4 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x8
 rm -rf /opt/nvim
 tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-ln -s ~/dev/personal/dotfiles/.config/nvim/ ~/.config/nvim/
+ln -s ~/dev/personal/dotfiles/.config/nvim ~/.config/nvim
