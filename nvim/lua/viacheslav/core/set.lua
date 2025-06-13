@@ -27,7 +27,7 @@ vim.opt.termguicolors = true
 
 vim.opt.shortmess:append "sI"
 
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 12
 
 -- For things like git signs, diagnostics, breakpoints, etc.
 vim.opt.signcolumn = "yes"
