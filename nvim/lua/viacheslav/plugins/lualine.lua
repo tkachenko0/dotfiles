@@ -9,11 +9,6 @@ return {
                 error = ' ', warn = ' ', info = ' ', hint = ' '
             }
         }
-        local filename_config = {
-            'filename',
-            file_status = true,
-            path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
-        }
 
         local branch_config = {
             'branch',
@@ -28,9 +23,9 @@ return {
                 disabled_filetypes = {}
             },
             sections = {
-                lualine_a = {},
+                lualine_a = { 'mode' },
                 lualine_b = { branch_config },
-                lualine_c = { filename_config },
+                lualine_c = { 'buffers' }, -- changed from filename_config to 'buffers'
                 lualine_x = { diagnostics_config, 'filetype' },
                 lualine_y = {},
                 lualine_z = {}
