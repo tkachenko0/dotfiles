@@ -4,8 +4,8 @@ vim.g.mapleader = " "
 vim.keymap.set('n', ';', ':')
 
 -- Remaps for beginning and end of line
-vim.keymap.set('n', 'B', '_', { desc = 'Go to beginning of line' })
-vim.keymap.set('n', 'E', '$', { desc = 'Go to end of line' })
+vim.keymap.set({ 'n', 'v' }, 'B', '_', { desc = 'Go to beginning of line' })
+vim.keymap.set({ 'n', 'v' }, 'E', '$', { desc = 'Go to end of line' })
 
 -- Custom scripts
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
@@ -57,3 +57,4 @@ vim.keymap.set("n", "Q", ":qa<CR>", { desc = "Quit all" })
 
 vim.keymap.set('n', '<A-Left>', '<Cmd>bprevious<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('n', '<A-Right>', '<Cmd>bnext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<leader>x', '<Cmd>bdelete<CR>', { desc = 'Close right buffer' })
