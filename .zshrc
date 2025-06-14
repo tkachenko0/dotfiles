@@ -38,7 +38,7 @@ alias v="nvim"
 alias vim="nvim"
 
 # Dir aliases
-alias lsa="lsa -la"
+alias lsa="ls -la"
 alias bat="batcat" 
 alias ..="cd .."
 alias ...="cd ../.."
