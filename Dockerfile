@@ -41,7 +41,7 @@ RUN NONINTERACTIVE=1 \
 RUN source ~/.zshrc
 
 # Delta (diff viewer)
-RUN brew install git-delta
+RUN source ~/.zshrc && brew install git-delta
 RUN git config --global core.pager "delta"
 RUN git config --global interactive.diffFilter "delta --color-only"
 RUN git config --global delta.navigate true
@@ -71,15 +71,12 @@ RUN ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
 
 # Node.js and npm and nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-RUN source ~/.zshrc
-RUN nvm install --lts
+RUN source ~/.zshrc && nvm install --lts
 
 # Python and pyenv
 RUN curl -fsSL https://pyenv.run | bash
-RUN source ~/.zshrc
-RUN pyenv install 3.12.3
-RUN pyenv global 3.12.3
-RUN source ~/.zshrc
+RUN source ~/.zshrc && pyenv install 3.12.3
+RUN source ~/.zshrc && pyenv global 3.12.3
 
 # Neovim
 RUN apt install -y ripgrep
