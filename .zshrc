@@ -1,19 +1,17 @@
+# Oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="cloud"
-
-plugins=(
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  z
-)
-
 source $ZSH/oh-my-zsh.sh
+
+# Plugins installed manually
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-z/zsh-z.plugin.zsh
 
 # Node
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Brew
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
@@ -65,4 +63,3 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
-
