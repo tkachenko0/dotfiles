@@ -20,6 +20,7 @@ vim.opt.backup = false
 
 -- Search settings
 vim.o.ignorecase = true  -- Ignore case when searching
+vim.o.smartcase = true   -- Override ignorecase if search contains uppercase letters
 vim.opt.hlsearch = true  -- Highlight search results
 vim.opt.incsearch = true -- Show search results as you type
 

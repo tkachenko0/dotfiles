@@ -3,6 +3,10 @@ vim.g.mapleader = " "
 -- Hate me for this, but I need it
 vim.keymap.set('n', ';', ':')
 
+-- Remaps for beginning and end of line
+vim.keymap.set('n', 'B', '_', { desc = 'Go to beginning of line' })
+vim.keymap.set('n', 'E', '$', { desc = 'Go to end of line' })
+
 -- Custom scripts
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
