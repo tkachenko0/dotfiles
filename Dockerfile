@@ -7,11 +7,11 @@ RUN apt update && apt upgrade -y
 
 RUN mkdir -p ~/dev/personal ~/.config
 
-# OR clone from git
-COPY . /root/dev/personal/dotfiles/
-
 # Core
 RUN apt install -y make build-essential procps curl libssl-dev zlib1g-dev fzf gcc
+
+# OR clone from git
+COPY . /root/dev/personal/dotfiles/
 
 #Git (ensure the latest git is installed to make neovim Diffview plugin work)
 RUN apt install -y git 
@@ -25,6 +25,7 @@ RUN git config --global pull.rebase true
 RUN apt install -y zsh
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 RUN chsh -s "$(which zsh)"
+SHELL ["/usr/bin/zsh", "-c"]
 # Zsh Plugins
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
@@ -32,7 +33,7 @@ RUN git clone https://github.com/agkozak/zsh-z ~/.zsh/zsh-z
 # Zsh Configuration
 RUN rm ~/.zshrc
 RUN ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
-RUN zsh
+RUN source ~/.zshrc
 
 # Homebrew
 RUN NONINTERACTIVE=1 \
