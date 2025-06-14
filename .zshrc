@@ -1,12 +1,14 @@
 # Oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="cloud"
-source $ZSH/oh-my-zsh.sh
 
-# Plugins installed manually
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-z/zsh-z.plugin.zsh
+plugins=(
+  z
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
 
 # Node
 export NVM_DIR="$HOME/.nvm"

@@ -27,9 +27,8 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 RUN chsh -s "$(which zsh)"
 SHELL ["/usr/bin/zsh", "-c"]
 # Zsh Plugins
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
-RUN git clone https://github.com/agkozak/zsh-z ~/.zsh/zsh-z
+RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 # Zsh Configuration
 RUN rm ~/.zshrc
 RUN ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
