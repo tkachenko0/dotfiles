@@ -23,11 +23,9 @@ return {
                 disabled_filetypes = {}
             },
             sections = {
-                lualine_a = {
-                    -- 'mode'
-                },
+                lualine_a = { 'mode' },
                 lualine_b = { branch_config },
-                lualine_c = { 'buffers' },
+                lualine_c = { 'filename' },
                 lualine_x = { diagnostics_config, 'filetype' },
                 lualine_y = {},
                 lualine_z = {}
