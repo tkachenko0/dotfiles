@@ -10,12 +10,10 @@ return {
             })
             vim.cmd("colorscheme vscode")
             -- Git diff colors (Visual Studio-like)
-            vim.cmd([[
-                highlight DiffAdd    guibg=#005a00 guifg=NONE gui=NONE
-                highlight DiffDelete guibg=#5f0000 guifg=NONE gui=NONE
-                highlight DiffChange guibg=#1B2A4A guifg=NONE gui=NONE
-                highlight DiffText   guibg=#265478 gui=bold
-            ]])
+            vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#005a00", fg = "NONE" })
+            vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#5f0000", fg = "NONE" })
+            vim.api.nvim_set_hl(0, "DiffChange", { bg = "#1B2A4A", fg = "NONE" })
+            vim.api.nvim_set_hl(0, "DiffText", { bg = "#265478", bold = true })
         end,
     },
 
