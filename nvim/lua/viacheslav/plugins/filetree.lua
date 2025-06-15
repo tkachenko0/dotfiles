@@ -18,7 +18,7 @@ return {
 
       sources = {
         "filesystem",
-        -- "buffers",
+        "buffers",
         "git_status",
       },
 
@@ -27,7 +27,7 @@ return {
         tabs_layout = "equal",
         sources = {
           { source = "filesystem", display_name = "󰉓 Files" },
-          -- { source = "buffers", display_name = "󰈚 Buffers" },
+          { source = "buffers", display_name = "󰈚 Buffers" },
           { source = "git_status", display_name = "󰊢 Git" },
         },
       },
