@@ -52,6 +52,9 @@ vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 4
+vim.opt.fillchars:append({
+    fold = " ", -- Clean fold fill character
+})
 
 -- Trigger checktime more frequently
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
