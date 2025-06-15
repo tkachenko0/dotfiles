@@ -65,6 +65,3 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
-
-# Always to the bottom of the terminal
-echo -en "\033[999;1H"
