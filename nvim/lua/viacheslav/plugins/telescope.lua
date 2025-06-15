@@ -102,7 +102,7 @@ return {
             vim.cmd('normal! "xy')
             local selection = vim.fn.getreg('x')
             vim.fn.setreg('"', reg_save, regtype_save)
-            return selection
+            return selection:gsub('\n', ''):gsub('\r', '')
         end
 
         vim.keymap.set('v', '<leader>f', function()
