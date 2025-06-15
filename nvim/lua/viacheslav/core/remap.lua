@@ -32,7 +32,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- Substitute
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Substitute word under cursor (whole word, global, case-insensitive)" })
-vim.keymap.set('v', '<leader>s', '"hy:%s/<C-r>h//g<Left><Left>', { desc = 'Substitute selected text in entire file' })
+vim.keymap.set('v', '<leader>s', '"hy:%s/<C-r>h/<C-r>h/g<Left><Left>',
+    { desc = 'Substitute selected text in entire file' })
 
 -- Not copy when deleting
 vim.keymap.set("n", "x", '"_x', { silent = true })
