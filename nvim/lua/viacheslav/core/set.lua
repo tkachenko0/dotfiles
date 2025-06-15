@@ -30,8 +30,7 @@ vim.opt.shortmess:append "sI"
 
 vim.opt.scrolloff = 12
 
--- For things like git signs, diagnostics, breakpoints, etc.
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes" -- For things like git signs, diagnostics, breakpoints, etc.
 
 vim.opt.isfname:append("@-@")
 
@@ -41,11 +40,9 @@ vim.opt.fillchars:append { eob = " " }
 
 vim.opt.termguicolors = true
 
--- Enable file system watcher
-vim.opt.updatetime = 200
+vim.opt.updatetime = 200 -- Enable file system watcher
 
--- Auto-reload files when changed externally
-vim.opt.autoread = true
+vim.opt.autoread = true  -- Auto-reload files when changed externally
 
 -- Trigger checktime more frequently
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
