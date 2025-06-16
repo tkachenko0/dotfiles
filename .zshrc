@@ -41,6 +41,7 @@ alias vim="nvim"
 
 # Dir aliases
 alias lsa="ls -la"
+alias lsd="lsd --tree --depth 1"
 alias bat="batcat" 
 alias ..="cd .."
 alias ...="cd ../.."
