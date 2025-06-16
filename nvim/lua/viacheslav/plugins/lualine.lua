@@ -6,7 +6,10 @@ return {
             'diagnostics',
             sources = { "nvim_diagnostic" },
             symbols = {
-                error = ' ', warn = ' ', info = ' ', hint = ' '
+                error = ' ',
+                warn = ' ',
+                info = ' ',
+                hint = ' '
             }
         }
 
@@ -18,15 +21,11 @@ return {
             options = {
                 icons_enabled = true,
                 theme = 'vscode',
-                section_separators = { left = '', right = '' },
-                component_separators = { left = '', right = '' },
-                disabled_filetypes = {}
             },
             sections = {
                 lualine_a = { 'mode' },
                 lualine_b = { branch_config },
                 lualine_c = {
-                    -- 'filename'
                     'buffers'
                 },
                 lualine_x = { diagnostics_config, 'filetype' },
