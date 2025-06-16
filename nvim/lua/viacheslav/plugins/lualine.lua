@@ -25,7 +25,10 @@ return {
             sections = {
                 lualine_a = { 'mode' },
                 lualine_b = { branch_config },
-                lualine_c = { 'filename' },
+                lualine_c = {
+                    -- 'filename'
+                    'buffers'
+                },
                 lualine_x = { diagnostics_config, 'filetype' },
                 lualine_y = {},
                 lualine_z = {}
