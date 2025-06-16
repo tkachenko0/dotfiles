@@ -14,8 +14,6 @@ return {
                 lualine_b = {
                     {
                         'buffers',
-                        mode = 0, -- 0: name, 1: index, 2: name+index, 3: number, 4: name+number
-                        max_length = function() return vim.o.columns * 2 / 3 end,
                         symbols = {
                             modified = ' ●',
                             alternate_file = '',
