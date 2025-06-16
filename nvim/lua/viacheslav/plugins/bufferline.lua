@@ -10,7 +10,8 @@ return {
             show_if_buffers_are_at_least = 2,
         })
         local map = vim.keymap.set
-        map('n', '<A-Left>', '<Plug>(cokeline-focus-prev)', { desc = 'Previous buffer' })
-        map('n', '<A-Right>', '<Plug>(cokeline-focus-next)', { desc = 'Next buffer' })
+        map('n', '<A-Left>', '<Plug>(cokeline-focus-prev)')
+        map('n', '<A-Right>', '<Plug>(cokeline-focus-next)')
+        map('n', '<leader>x', '<Cmd>bdelete<CR>')
     end,
 }
