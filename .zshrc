@@ -66,9 +66,3 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
-
-# Custom cd function to source .projectrc if it exists
-cd() {
-  builtin cd "$@" || return
-  [ -f ".projectrc" ] && source .projectrc
-}
