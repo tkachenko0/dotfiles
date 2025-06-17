@@ -11,6 +11,5 @@ if [ -z "$1" ]; then
 fi
 
 git add . || { echo -e "${RED}ERROR:${NC} Failed to add files."; exit 1; }
-git commit -m "$1" || { echo -e "${RED}ERROR:${NC} Commit failed. Maybe no changes to commit?"; exit 1; }
-git push || { echo -e "${RED}ERROR:${NC} Push failed. Check your network or branch permissions."; exit 1; }
-echo -e "${GREEN}SUCCESS:${NC} Code pushed to the repo."
+git commit -m "$1" || { echo -e "${RED}ERROR:${NC}"; exit 1; }
+git push || { echo -e "${RED}ERROR:${NC} Push failed."; exit 1; }
