@@ -4,6 +4,19 @@
 
 This repository contains my personal dotfiles and development environment setup.
 
+To pull all the repo:
+
+```bash
+git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+```
+
+To update the submodules after cloning:
+
+```bash
+git submodule update --remote --merge
+git push
+```
+
 ## Bootstrap Instructions to Test inside Docker
 
 To test the setup inside a Docker container, you can use the provided Dockerfile. This will create a container with all the necessary tools and configurations pre-installed.
