@@ -14,6 +14,7 @@ To update the submodules after cloning:
 
 ```bash
 git submodule update --remote --merge
+git add .
 git push
 ```
 
