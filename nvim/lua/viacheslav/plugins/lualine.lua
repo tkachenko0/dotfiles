@@ -4,46 +4,28 @@ return {
     config = function()
         require("lualine").setup {
             options = {
+                section_separators = { left = '', right = '' },
                 component_separators = { left = '', right = '' },
-                section_separators = { left = '', right = '' },
             },
             sections = {
                 lualine_a = {
-                    'branch',
+                    {
+                        'branch',
+                        separator = { right = '' },
+                        right_padding = 0,
+                    },
                 },
                 lualine_b = {
-                    {
-                        'buffers',
-                        symbols = {
-                            modified = ' ●',
-                            alternate_file = '',
-                            directory = '',
-                        },
-                        filetype_names = {
-                            TelescopePrompt = '',
-                            dashboard = '',
-                            packer = '',
-                            fzf = '',
-                            ['neo-tree'] = '',
-                            alpha = ''
-                        },
-                        disabled_buftypes = {
-                            'quickfix',
-                            'prompt'
-                        },
-                    }
+                    'diff',
                 },
-                lualine_c = {
-                },
+                lualine_c = {},
                 lualine_x = {
                     'diagnostics',
                 },
                 lualine_y = {
-
+                    'filetype',
                 },
-                lualine_z = {
-
-                }
+                lualine_z = {},
             },
             extensions = { 'fugitive' },
         }
