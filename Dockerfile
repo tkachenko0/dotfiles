@@ -10,11 +10,11 @@ RUN mkdir -p ~/dev/personal ~/.config
 # Core
 RUN apt install -y make build-essential procps curl libssl-dev zlib1g-dev fzf gcc
 
-# OR clone from git
-COPY . /root/dev/personal/dotfiles/
-
 #Git (ensure the latest git is installed to make neovim Diffview plugin work)
 RUN apt install -y git 
+
+RUN git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+
 RUN git config --global user.name "viacheslav.tkachenko"
 RUN git config --global user.email "t.viacheslav00@gmail.com"
 RUN git config --global init.defaultBranch main
