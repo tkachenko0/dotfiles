@@ -32,7 +32,7 @@ alias gs="git status -s"
 alias grs="git restore . && git status"
 alias gc="git commit -m"
 alias gsw="git switch"
-alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --branches --remotes"
+alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --branches --remotes --tags"
 alias diff="git diff"
 
 # Neovim aliases
