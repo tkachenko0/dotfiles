@@ -37,7 +37,6 @@ alias diff="git diff"
 
 # Neovim aliases
 alias v="nvim"
-alias vim="nvim"
 
 # Dir aliases
 alias lsa="ls -la"
