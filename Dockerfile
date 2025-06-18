@@ -19,7 +19,6 @@ RUN git config --global user.name "viacheslav.tkachenko"
 RUN git config --global user.email "t.viacheslav00@gmail.com"
 RUN git config --global init.defaultBranch main
 RUN git config --global core.editor "nvim"
-RUN git config --global pull.rebase true
 
 # Zsh
 RUN apt install -y zsh
