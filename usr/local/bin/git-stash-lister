@@ -1,7 +1,15 @@
 #!/bin/bash
 
-stash=$(git stash list | sed 's/:.*://' | fzf)
-[[ -z "$stash" ]] && exit 0
-index=$(echo "$stash" | awk -F: '{print $1}' | sed 's/stash@{//;s/}//')
-git stash apply "stash@{$index}"
+selected=$(git stash list | fzf)
+
+[[ -z "$selected" ]] && exit 0
+
+stash_ref=$(echo "$selected" | sed -n 's/^\(stash@{[0-9]\+}\):.*/\1/p')
+
+[[ -z "$stash_ref" ]] && {
+  echo "Failed to extract stash reference."
+  exit 1
+}
+
+git stash apply "$stash_ref"
 
