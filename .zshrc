@@ -59,7 +59,7 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search  
 bindkey "^[[B" down-line-or-beginning-search
 fzf-history-widget() {
-  BUFFER=$(fc -rl 1 | fzf --height 40% --reverse --tac | sed 's/^[ ]*[0-9]*[ ]*//')
+  BUFFER=$(fc -rl 1 | fzf --height 50% --reverse --tac | sed 's/^[ ]*[0-9]*[ ]*//')
   CURSOR=$#BUFFER
   zle reset-prompt
 }
