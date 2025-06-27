@@ -53,7 +53,7 @@ bindkey -s '^A' 'git-stash-lister\n'
 
 # Minimal fuzzy history search with fzf
 fzf-history-widget() {
-  BUFFER=$(fc -rl 1 | fzf --height 50% --reverse --tac | sed 's/^[[:space:]]*[0-9]*[[:space:]]*//')
+  BUFFER=$(fc -rl 1 | fzf --reverse --tac | sed 's/^[[:space:]]*[0-9]*[[:space:]]*//')
   CURSOR=$#BUFFER
   zle reset-prompt
 }
