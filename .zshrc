@@ -51,15 +51,9 @@ bindkey -s '^B' 'git-branch-switcher\n'
 bindkey -s '^P' 'git-pullmaster\n'          
 bindkey -s '^A' 'git-stash-lister\n'        
 
-# Use fzf for reverse history search
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search  
-bindkey "^[[B" down-line-or-beginning-search
+# Minimal fuzzy history search with fzf
 fzf-history-widget() {
-  BUFFER=$(fc -rl 1 | fzf --height 50% --reverse --tac | sed 's/^[ ]*[0-9]*[ ]*//')
+  BUFFER=$(fc -rl 1 | fzf --height 50% --reverse --tac | sed 's/^[[:space:]]*[0-9]*[[:space:]]*//')
   CURSOR=$#BUFFER
   zle reset-prompt
 }
