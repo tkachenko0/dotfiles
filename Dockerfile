@@ -13,7 +13,8 @@ RUN apt install -y make build-essential procps curl libssl-dev zlib1g-dev fzf gc
 #Git (ensure the latest git is installed to make neovim Diffview plugin work)
 RUN apt install -y git 
 
-RUN git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+RUN git clone git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+RUN git clone git@github.com:tkachenko0/nvim.git ~/dev/personal/nvim
 
 RUN git config --global user.name "viacheslav.tkachenko"
 RUN git config --global user.email "t.viacheslav00@gmail.com"
@@ -62,6 +63,8 @@ RUN chmod +x /usr/local/bin/kickass
 RUN chmod +x /usr/local/bin/git-branch-switcher
 RUN chmod +x /usr/local/bin/git-stash-lister
 RUN chmod +x /usr/local/bin/git-multiproj-branch-switcher
+
+RUN ln -s ~/dev/personal/nvim ~/.config/nvim
 
 # Tmux
 RUN apt -y install tmux
