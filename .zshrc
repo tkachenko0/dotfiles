@@ -43,8 +43,6 @@ alias v="nvim"
 alias lsa="ls -la"
 alias lsd="lsd --tree -a --depth 1"
 alias bat="batcat" 
-alias ..="cd .."
-alias ...="cd ../.."
 
 # Custom scripts
 bindkey -s '^F' 'tmux-sessionizer\n'        
