@@ -36,6 +36,8 @@ alias gsw="git switch"
 alias gg="git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --branches --remotes --tags"
 alias diff="git diff"
 
+alias gitcode="code ~/dev/gitgraph.code-workspace"
+
 # Neovim aliases
 alias v="nvim"
 
