@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf)
 
