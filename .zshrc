@@ -29,7 +29,7 @@ eval "$(pyenv init - bash)"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Git aliases
-alias gs="git status -s"
+alias gs="git status"
 alias grs="git restore . && git status"
 alias gc="git commit -m"
 alias gsw="git switch"
