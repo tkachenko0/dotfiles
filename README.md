@@ -10,6 +10,7 @@ To pull all the repo:
 git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
 ```
 
+
 To update the submodules after cloning:
 
 ```bash
