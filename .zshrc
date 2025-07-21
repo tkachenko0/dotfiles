@@ -41,6 +41,8 @@ alias gitcode="code ~/dev/gitgraph.code-workspace"
 # Neovim aliases
 alias v="nvim"
 
+alias k="kubectl"
+
 # Dir aliases
 alias lsa="ls -la"
 alias lsd="lsd --tree -a --depth 1"
