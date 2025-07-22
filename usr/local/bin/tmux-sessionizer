@@ -9,34 +9,17 @@ project_name=$(basename "$project_dir" | tr . _)
 
 tmux_running=$(pgrep tmux)
 
-tmux_windows_file="$project_dir/.tmux-windows"
-session_exists=$(tmux has-session -t "$project_name" 2>/dev/null; echo $?)
-
-# First window flag (true if session doesn't exist)
-first_window_created=false
-
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s "$project_name" -c "$selected"
-    # Source .tmux-windows if it exists
-    if [[ -f $tmux_windows_file ]]; then
-        tmux send-keys -t "$project_name" "tmux source-file \"$tmux_windows_file\"" C-m
-    fi
     exit 0
 fi
 
-if [[ $session_exists -ne 0 ]]; then
+if ! tmux has-session -t "$project_name" 2>/dev/null; then
     tmux new-session -ds "$project_name" -c "$selected"
-    first_window_created=true
 else
-    # Check if a window for this dir already exists
     if ! tmux list-windows -t "$project_name" -F "#{window_active}:#{pane_current_path}" | grep -q "$selected"; then
         tmux new-window -t "$project_name:" -c "$selected"
     fi
-fi
-
-# If it's the first time creating the session and .tmux-windows exists
-if $first_window_created && [[ -f $tmux_windows_file ]]; then
-    tmux send-keys -t "$project_name" "tmux source-file \"$tmux_windows_file\"" C-m
 fi
 
 if [[ -n $TMUX ]]; then
@@ -45,3 +28,4 @@ if [[ -n $TMUX ]]; then
 else
     tmux attach-session -t "$project_name"
 fi
+
