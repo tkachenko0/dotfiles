@@ -10,7 +10,6 @@ To pull all the repo:
 git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
 ```
 
-
 To update the submodules after cloning:
 
 ```bash
@@ -45,6 +44,29 @@ Custom `~/.zshrc` with plugins and theming using [oh-my-zsh](https://ohmyz.sh/),
 ## Tmux
 
 Includes a configured `~/.tmux.conf` for a terminal multiplexing experience with custom keybindings and visuals.
+
+`.tmux-windows` example:
+
+```bash
+rename-window frontend
+send-keys 'cd ~/dev/proj/micros1/' C-m
+send-keys 'nvim' C-m
+
+new-window -n build
+send-keys 'cd ~/dev/proj/micros1/' C-m
+send-keys 'nvm use' C-m
+send-keys 'npm run dev' C-m
+
+select-window -t build
+split-window -h
+send-keys 'cd ~/dev/proj/micros1/' C-m
+
+select-window -t frontend
+```
+
+```bash
+tmux source-file ../.tmux-windows
+```
 
 ## Node.js, nvm and npm
 
