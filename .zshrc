@@ -31,6 +31,7 @@ export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 # Dotnet
 export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$HOME/dotnet
+export PATH="$PATH:/home/viacheslav/.dotnet/tools"
 
 # Git aliases
 alias gs="git status"
