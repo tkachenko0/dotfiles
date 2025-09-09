@@ -35,7 +35,7 @@ export PATH="$PATH:/home/viacheslav/.dotnet/tools"
 
 add-migration() {
   if [ -z "$1" ]; then
-    echo "Usage: ef_add_migration <MigrationName>"
+    echo "Usage: add-migration <MigrationName>"
     return 1
   fi
   dotnet ef migrations add "$1" \
