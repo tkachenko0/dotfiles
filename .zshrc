@@ -33,6 +33,22 @@ export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$HOME/dotnet
 export PATH="$PATH:/home/viacheslav/.dotnet/tools"
 
+add-migration() {
+  if [ -z "$1" ]; then
+    echo "Usage: ef_add_migration <MigrationName>"
+    return 1
+  fi
+  dotnet ef migrations add "$1" \
+    --project GestioneEE.Api.Net.Repositories \
+    --startup-project GestioneEE.Api.Net.Web
+}
+
+migrate() {
+  dotnet ef database update \
+    --project GestioneEE.Api.Net.Repositories \
+    --startup-project GestioneEE.Api.Net.Web
+}
+
 # Git aliases
 alias gs="git status"
 alias grs="git restore . && git status"
