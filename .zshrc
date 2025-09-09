@@ -34,10 +34,6 @@ export PATH=$PATH:$HOME/dotnet
 export PATH="$PATH:/home/viacheslav/.dotnet/tools"
 
 add-migration() {
-  if [ -z "$1" ]; then
-    echo "Usage: add-migration <MigrationName>"
-    return 1
-  fi
   dotnet ef migrations add "$1" \
     --project GestioneEE.Api.Net.Repositories \
     --startup-project GestioneEE.Api.Net.Web
