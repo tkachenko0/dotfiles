@@ -45,6 +45,25 @@ migrate() {
     --startup-project GestioneEE.Api.Net.Web
 }
 
+massive-migrate() {
+  dotnet ef database drop \
+    --project GestioneEE.Api.Net.Repositories \
+    --startup-project GestioneEE.Api.Net.Web \
+    --force
+
+  rm -rf GestioneEE.Api.Net.Repositories/Migrations/*
+
+  dotnet ef migrations add InitialCreate \
+      --project GestioneEE.Api.Net.Repositories \
+      --startup-project GestioneEE.Api.Net.Web
+
+  dotnet ef database update \
+      --project GestioneEE.Api.Net.Repositories \
+      --startup-project GestioneEE.Api.Net.Web
+
+  dotnet ef database update --project GestioneEE.Api.Net.Repositories --startup-project GestioneEE.Api.Net.Web
+}
+
 # Git aliases
 alias gs="git status"
 alias grs="git restore . && git status"
