@@ -67,3 +67,15 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
+
+add-migration() {
+  dotnet ef migrations add "$1" \
+    --project GestioneEE.Api.Net.Repositories \
+    --startup-project GestioneEE.Api.Net.Web
+}
+
+migrate() {
+  dotnet ef database update \
+    --project GestioneEE.Api.Net.Repositories \
+    --startup-project GestioneEE.Api.Net.Web
+}
