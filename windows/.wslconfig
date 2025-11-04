@@ -1,0 +1,4 @@
+[wsl2]
+networkingMode=nat
+memory=15GB
+processors=12
