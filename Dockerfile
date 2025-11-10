@@ -56,6 +56,7 @@ RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/kickass /usr/local/bin/kickass
 RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-branch-switcher /usr/local/bin/git-branch-switcher
 RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-stash-lister /usr/local/bin/git-stash-lister
 RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-multiproj-branch-switcher /usr/local/bin/git-multiproj-branch-switcher
+RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-squash-to-one /usr/local/bin/git-squash-to-one
 
 RUN chmod +x /usr/local/bin/tmux-sessionizer
 RUN chmod +x /usr/local/bin/git-pullmaster
@@ -63,6 +64,7 @@ RUN chmod +x /usr/local/bin/kickass
 RUN chmod +x /usr/local/bin/git-branch-switcher
 RUN chmod +x /usr/local/bin/git-stash-lister
 RUN chmod +x /usr/local/bin/git-multiproj-branch-switcher
+RUN chmod +x /usr/local/bin/git-squash-to-one
 
 RUN ln -s ~/dev/personal/nvim ~/.config/nvim
 
