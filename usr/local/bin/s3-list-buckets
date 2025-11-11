@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -e
+
+PROFILE=${AWS_PROFILE:-default} 
+TMPFILE=$(mktemp)
+
+select_bucket() {
+  echo "Select an S3 bucket:"
+  aws --profile "$PROFILE" s3 ls | awk '{print $3}' | fzf --prompt="🪣 Bucket: "
+}
+
+BUCKET="$1"
+
+if [ -z "$BUCKET" ]; then
+  BUCKET=$(select_bucket)
+  [ -z "$BUCKET" ] && { echo "Nessun bucket selezionato."; exit 1; }
+fi
+
+aws --profile "$PROFILE" s3 ls "s3://$BUCKET" --recursive | awk '{print $4}' > "$TMPFILE"
+
+if [ ! -s "$TMPFILE" ]; then
+  echo "No file found in $BUCKET"
+  rm "$TMPFILE"
+  exit 1
+fi
+
+SELECTED=$(cat "$TMPFILE" | fzf --height 40% --reverse)
+
+rm "$TMPFILE"
+
+if [ -z "$SELECTED" ]; then
+  echo "No file selected"
+  exit 1
+fi
+
+if ! aws --profile "$PROFILE" s3 cp "s3://$BUCKET/$SELECTED" - | jq; then
+  echo "⚠️ Non è un file JSON, mostro contenuto raw:"
+  aws --profile "$PROFILE" s3 cp "s3://$BUCKET/$SELECTED" -
+fi
