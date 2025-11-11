@@ -1,40 +1,76 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
-PROFILE=${AWS_PROFILE:-default} 
+PROFILE=${AWS_PROFILE:-default}
 TMPFILE=$(mktemp)
+PRESIGNED=false
 
+# Check for --presigned-url flag
+for arg in "$@"; do
+  if [ "$arg" == "--presigned-url" ]; then
+    PRESIGNED=true
+  fi
+done
+
+# Function to select a bucket
 select_bucket() {
-  echo "Select an S3 bucket:"
-  aws --profile "$PROFILE" s3 ls | awk '{print $3}' | fzf --prompt="🪣 Bucket: "
+  echo "Fetching buckets..."
+  aws --profile "$PROFILE" s3 ls | awk '{print $3}' | fzf --prompt="🪣 Select a bucket: "
 }
 
-BUCKET="$1"
+# Determine bucket name
+BUCKET=""
+for arg in "$@"; do
+  if [[ "$arg" != "--presigned-url" ]]; then
+    BUCKET="$arg"
+  fi
+done
 
 if [ -z "$BUCKET" ]; then
   BUCKET=$(select_bucket)
-  [ -z "$BUCKET" ] && { echo "Nessun bucket selezionato."; exit 1; }
+  if [ -z "$BUCKET" ]; then
+    echo "❌ No bucket selected."
+    exit 1
+  fi
 fi
 
+# List objects in bucket
 aws --profile "$PROFILE" s3 ls "s3://$BUCKET" --recursive | awk '{print $4}' > "$TMPFILE"
 
 if [ ! -s "$TMPFILE" ]; then
-  echo "No file found in $BUCKET"
+  echo "⚠️ No files found in bucket '$BUCKET'"
   rm "$TMPFILE"
   exit 1
 fi
 
-SELECTED=$(cat "$TMPFILE" | fzf --height 40% --reverse)
+SELECTED=$(cat "$TMPFILE" | fzf --height 40% --reverse --prompt="📂 Select file: ")
 
 rm "$TMPFILE"
 
 if [ -z "$SELECTED" ]; then
-  echo "No file selected"
+  echo "❌ No file selected."
   exit 1
 fi
 
-if ! aws --profile "$PROFILE" s3 cp "s3://$BUCKET/$SELECTED" - | jq; then
-  echo "⚠️ Non è un file JSON, mostro contenuto raw:"
-  aws --profile "$PROFILE" s3 cp "s3://$BUCKET/$SELECTED" -
+# Handle presigned URL mode
+if [ "$PRESIGNED" = true ]; then
+  echo "🔗 Generating presigned URL for s3://$BUCKET/$SELECTED..."
+  URL=$(aws --profile "$PROFILE" s3 presign "s3://$BUCKET/$SELECTED")
+  echo "$URL"
+  exit 0
 fi
+
+# Download file content to tmp
+TMPJSON=$(mktemp)
+aws --profile "$PROFILE" s3 cp "s3://$BUCKET/$SELECTED" "$TMPJSON" >/dev/null
+
+# Check if file is JSON
+if jq empty "$TMPJSON" >/dev/null 2>&1; then
+  cat "$TMPJSON" | jq
+else
+  echo "⚠️ File is not JSON, skipping display."
+fi
+
+rm "$TMPJSON"
+
