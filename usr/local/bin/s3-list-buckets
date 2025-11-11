@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-PROFILE=${AWS_PROFILE:-default}
 TMPFILE=$(mktemp)
 PRESIGNED=false
 
@@ -14,7 +13,7 @@ done
 
 select_bucket() {
   echo "Fetching buckets..."
-  aws --profile "$PROFILE" s3 ls | awk '{print $3}' | fzf --prompt="🪣 Select a bucket: "
+  aws s3 ls | awk '{print $3}' | fzf --prompt="🪣 Select a bucket: "
 }
 
 BUCKET=""
@@ -32,7 +31,7 @@ if [ -z "$BUCKET" ]; then
   fi
 fi
 
-aws --profile "$PROFILE" s3 ls "s3://$BUCKET" --recursive | awk '{print $4}' > "$TMPFILE"
+aws s3 ls "s3://$BUCKET" --recursive | awk '{print $4}' > "$TMPFILE"
 
 if [ ! -s "$TMPFILE" ]; then
   echo "No files found in bucket '$BUCKET'"
@@ -50,13 +49,13 @@ if [ -z "$SELECTED" ]; then
 fi
 
 if [ "$PRESIGNED" = true ]; then
-  URL=$(aws --profile "$PROFILE" s3 presign "s3://$BUCKET/$SELECTED")
+  URL=$(aws s3 presign "s3://$BUCKET/$SELECTED")
   echo "$URL"
   exit 0
 fi
 
 TMPJSON=$(mktemp)
-aws --profile "$PROFILE" s3 cp "s3://$BUCKET/$SELECTED" "$TMPJSON" >/dev/null
+aws s3 cp "s3://$BUCKET/$SELECTED" "$TMPJSON" >/dev/null
 
 if jq empty "$TMPJSON" >/dev/null 2>&1; then
   cat "$TMPJSON" | jq
