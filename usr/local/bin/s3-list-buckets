@@ -6,20 +6,17 @@ PROFILE=${AWS_PROFILE:-default}
 TMPFILE=$(mktemp)
 PRESIGNED=false
 
-# Check for --presigned-url flag
 for arg in "$@"; do
   if [ "$arg" == "--presigned-url" ]; then
     PRESIGNED=true
   fi
 done
 
-# Function to select a bucket
 select_bucket() {
   echo "Fetching buckets..."
   aws --profile "$PROFILE" s3 ls | awk '{print $3}' | fzf --prompt="🪣 Select a bucket: "
 }
 
-# Determine bucket name
 BUCKET=""
 for arg in "$@"; do
   if [[ "$arg" != "--presigned-url" ]]; then
@@ -30,47 +27,41 @@ done
 if [ -z "$BUCKET" ]; then
   BUCKET=$(select_bucket)
   if [ -z "$BUCKET" ]; then
-    echo "❌ No bucket selected."
+    echo "No bucket selected."
     exit 1
   fi
 fi
 
-# List objects in bucket
 aws --profile "$PROFILE" s3 ls "s3://$BUCKET" --recursive | awk '{print $4}' > "$TMPFILE"
 
 if [ ! -s "$TMPFILE" ]; then
-  echo "⚠️ No files found in bucket '$BUCKET'"
+  echo "No files found in bucket '$BUCKET'"
   rm "$TMPFILE"
   exit 1
 fi
 
-SELECTED=$(cat "$TMPFILE" | fzf --height 40% --reverse --prompt="📂 Select file: ")
+SELECTED=$(cat "$TMPFILE" | fzf --height 40% --reverse)
 
 rm "$TMPFILE"
 
 if [ -z "$SELECTED" ]; then
-  echo "❌ No file selected."
+  echo "No file selected."
   exit 1
 fi
 
-# Handle presigned URL mode
 if [ "$PRESIGNED" = true ]; then
-  echo "🔗 Generating presigned URL for s3://$BUCKET/$SELECTED..."
   URL=$(aws --profile "$PROFILE" s3 presign "s3://$BUCKET/$SELECTED")
   echo "$URL"
   exit 0
 fi
 
-# Download file content to tmp
 TMPJSON=$(mktemp)
 aws --profile "$PROFILE" s3 cp "s3://$BUCKET/$SELECTED" "$TMPJSON" >/dev/null
 
-# Check if file is JSON
 if jq empty "$TMPJSON" >/dev/null 2>&1; then
   cat "$TMPJSON" | jq
 else
-  echo "⚠️ File is not JSON, skipping display."
+  echo "File is not JSON, skipping display."
 fi
 
 rm "$TMPJSON"
-
