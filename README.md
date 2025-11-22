@@ -91,8 +91,9 @@ Terminal-based PostgreSQL query execution system.
 ### Setup
 
 1. Create `connections.conf` in your project root:
+
 ```
-local=postgresql://postgres:postgres@localhost:5432/gee-local
+local=postgresql://postgres:postgres@localhost:5432/aaa-local
 staging=postgresql://user:pass@host:5432/db
 ```
 
