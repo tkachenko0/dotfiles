@@ -1,0 +1,28 @@
+#!/bin/bash
+
+CONNECTIONS_FILE="./connections.conf"
+
+if [ ! -f "$CONNECTIONS_FILE" ]; then
+    echo "connections.conf not found in current directory"
+    exit 1
+fi
+
+if [ -z "$1" ]; then
+    echo "Available connections:"
+    grep -v '^#' "$CONNECTIONS_FILE" | grep -v '^$' | cut -d'=' -f1
+    exit 0
+fi
+
+CONNECTION_NAME="$1"
+CONNECTION_STRING=$(grep "^$CONNECTION_NAME=" "$CONNECTIONS_FILE" | cut -d'=' -f2-)
+
+if [ -z "$CONNECTION_STRING" ]; then
+    echo "Connection '$CONNECTION_NAME' not found"
+    exit 1
+fi
+
+if [ -n "$2" ]; then
+    psql "$CONNECTION_STRING" -f "$2"
+else
+    psql "$CONNECTION_STRING"
+fi

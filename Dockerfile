@@ -49,24 +49,6 @@ RUN git config --global delta.syntax-theme "Visual Studio Dark+"
 RUN git config --global delta.hunk-header-style omit
 RUN git config --global delta.dark true
 
-## Scripts
-RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/tmux-sessionizer /usr/local/bin/tmux-sessionizer
-RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-pullmaster /usr/local/bin/git-pullmaster
-RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/kickass /usr/local/bin/kickass
-RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-branch-switcher /usr/local/bin/git-branch-switcher
-RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-stash-lister /usr/local/bin/git-stash-lister
-RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-multiproj-branch-switcher /usr/local/bin/git-multiproj-branch-switcher
-RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/git-squash-to-one /usr/local/bin/git-squash-to-one
-RUN ln -s ~/dev/personal/dotfiles/usr/local/bin/s3-list-buckets /usr/local/bin/s3-list-buckets
-
-RUN chmod +x /usr/local/bin/tmux-sessionizer
-RUN chmod +x /usr/local/bin/git-pullmaster
-RUN chmod +x /usr/local/bin/kickass
-RUN chmod +x /usr/local/bin/git-branch-switcher
-RUN chmod +x /usr/local/bin/git-stash-lister
-RUN chmod +x /usr/local/bin/git-multiproj-branch-switcher
-RUN chmod +x /usr/local/bin/git-squash-to-one
-RUN chmod +x /usr/local/bin/s3-list-buckets
 
 RUN ln -s ~/dev/personal/nvim ~/.config/nvim
 

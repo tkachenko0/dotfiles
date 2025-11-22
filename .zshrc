@@ -79,3 +79,6 @@ migrate() {
     --project GestioneEE.Api.Net.Repositories \
     --startup-project GestioneEE.Api.Net.Web
 }
+
+# Custom scripts from dotfiles
+export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"

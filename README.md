@@ -82,4 +82,26 @@ Used to manage packages
 
 ## Custom scripts
 
-Custom CLI scripts are available in `/usr/local/bin` and include utilities for development, git, system tweaks, etc.
+Custom CLI scripts are available in `scripts/` and include utilities for development, git, system tweaks, etc.
+
+## SQL Workflow
+
+Terminal-based PostgreSQL query execution system.
+
+### Setup
+
+1. Create `connections.conf` in your project root:
+```
+local=postgresql://postgres:postgres@localhost:5432/gee-local
+staging=postgresql://user:pass@host:5432/db
+```
+
+### Usage
+
+```bash
+export VIA_DB_CONN=local
+
+# Run queries
+sql-run query.sql
+sql-run -i
+```
