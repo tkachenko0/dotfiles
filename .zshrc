@@ -1,7 +1,8 @@
 # Oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="cloud"
+# ZSH_THEME="cloud"  # Disabled for Starship
+ZSH_THEME=""         # Use empty theme for Starship
 
 plugins=(
   z
@@ -10,6 +11,9 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Starship prompt (replaces oh-my-zsh theme)
+eval "$(starship init zsh)"
 
 # Node
 export NVM_DIR="$HOME/.nvm"
@@ -23,7 +27,7 @@ export PATH="$PATH:$BREW_HOME"
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+eval "$(pyenv init - zsh)"
 
 # Neovim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
