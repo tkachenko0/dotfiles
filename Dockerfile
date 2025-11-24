@@ -41,6 +41,7 @@ RUN source ~/.zshrc
 
 # Delta (diff viewer)
 RUN source ~/.zshrc && brew install git-delta
+RUN source ~/.zshrc && brew install starship
 RUN git config --global core.pager "delta"
 RUN git config --global interactive.diffFilter "delta --color-only"
 RUN git config --global delta.navigate true
@@ -49,8 +50,8 @@ RUN git config --global delta.syntax-theme "Visual Studio Dark+"
 RUN git config --global delta.hunk-header-style omit
 RUN git config --global delta.dark true
 
-
 RUN ln -s ~/dev/personal/nvim ~/.config/nvim
+RUN ln -s ~/dev/personal/starship.toml ~/.config/starship.toml
 
 # Tmux
 RUN apt -y install tmux

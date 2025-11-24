@@ -1,0 +1,3 @@
+[directory]
+truncation_length = 1  # Mostra solo 1 livello invece di 3
+truncate_to_repo = true # Taglia al repository root
