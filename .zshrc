@@ -12,9 +12,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Starship prompt (replaces oh-my-zsh theme)
-eval "$(starship init zsh)"
-
 # Node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -23,6 +20,9 @@ export NVM_DIR="$HOME/.nvm"
 # Brew
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$BREW_HOME"
+
+# Starship prompt (replaces oh-my-zsh theme)
+eval "$(starship init zsh)"
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
