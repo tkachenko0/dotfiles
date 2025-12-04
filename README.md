@@ -7,7 +7,7 @@ This repository contains my personal dotfiles and development environment setup.
 To pull all the repo:
 
 ```bash
-git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+git clone --recurse-submodules https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
 ```
 
 To update the submodules after cloning:
