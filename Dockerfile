@@ -3,75 +3,22 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
 
-RUN apt update && apt upgrade -y
+# Install git and sudo first
+RUN apt-get update && apt-get install -y git sudo
+
+# Create non-root user
+RUN useradd -m -s /bin/bash testuser && \
+    echo 'testuser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER testuser
+WORKDIR /home/testuser
 
 RUN mkdir -p ~/dev/personal ~/.config
 
-# Core
-RUN apt install -y make build-essential procps curl libssl-dev zlib1g-dev fzf gcc
+COPY . ~/dev/personal/dotfiles
+RUN git clone https://github.com/tkachenko0/nvim.git ~/dev/personal/nvim
 
-#Git (ensure the latest git is installed to make neovim Diffview plugin work)
-RUN apt install -y git 
-
-RUN git clone git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
-RUN git clone git@github.com:tkachenko0/nvim.git ~/dev/personal/nvim
-
-RUN git config --global user.name "viacheslav.tkachenko"
-RUN git config --global user.email "t.viacheslav00@gmail.com"
-RUN git config --global init.defaultBranch main
-RUN git config --global core.editor "nvim"
-
-# Zsh
-RUN apt install -y zsh
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-RUN chsh -s "$(which zsh)"
-SHELL ["/usr/bin/zsh", "-c"]
-# Zsh Plugins
-RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# Zsh Configuration
-RUN rm ~/.zshrc
-RUN ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
-RUN source ~/.zshrc
-
-# Homebrew
-RUN NONINTERACTIVE=1 \
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-RUN source ~/.zshrc
-
-# Delta (diff viewer)
-RUN source ~/.zshrc && brew install git-delta
-RUN source ~/.zshrc && brew install starship
-RUN git config --global core.pager "delta"
-RUN git config --global interactive.diffFilter "delta --color-only"
-RUN git config --global delta.navigate true
-RUN git config --global delta.side-by-side true
-RUN git config --global delta.syntax-theme "Visual Studio Dark+"
-RUN git config --global delta.hunk-header-style omit
-RUN git config --global delta.dark true
-
-RUN ln -s ~/dev/personal/nvim ~/.config/nvim
-RUN ln -s ~/dev/personal/starship.toml ~/.config/starship.toml
-
-# Tmux
-RUN apt -y install tmux
-RUN ln -s ~/dev/personal/dotfiles/.tmux.conf ~/.tmux.conf
-
-# Node.js and npm and nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-RUN source ~/.zshrc && nvm install --lts
-
-# Python and pyenv
-RUN curl -fsSL https://pyenv.run | bash
-RUN source ~/.zshrc && pyenv install 3.12.3
-RUN source ~/.zshrc && pyenv global 3.12.3
-
-# Neovim
-RUN apt install -y ripgrep
-RUN apt install -y luarocks
-RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
-RUN rm -rf /opt/nvim
-RUN tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-RUN ln -s ~/dev/personal/dotfiles/nvim ~/.config/nvim
+WORKDIR ~/dev/personal/dotfiles
+RUN ./install.sh all
 
 CMD ["zsh"]

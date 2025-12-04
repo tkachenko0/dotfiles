@@ -7,7 +7,7 @@ This repository contains my personal dotfiles and development environment setup.
 To pull all the repo:
 
 ```bash
-git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+git clone --recurse-submodules https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
 ```
 
 To update the submodules after cloning:
@@ -18,17 +18,41 @@ git add .
 git push
 ```
 
-## Bootstrap Instructions to Test inside Docker
+## Installation
 
-To test the setup inside a Docker container, you can use the provided Dockerfile. This will create a container with all the necessary tools and configurations pre-installed.
+```bash
+# Clone the repository
+git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+cd ~/dev/personal/dotfiles
+
+# Install everything
+./install.sh all
+
+# Or install specific module
+./install.sh zsh
+./install.sh neovim
+```
+
+### Available Modules
+
+- **core**: Essential packages (build tools, curl, fzf, ripgrep)
+- **git**: Git configuration
+- **zsh**: Zsh with oh-my-zsh and plugins
+- **homebrew**: Package manager (macOS)
+- **delta**: Git diff viewer
+- **starship**: Shell prompt
+- **tmux**: Terminal multiplexer
+- **nvm**: Node.js version manager
+- **pyenv**: Python version manager
+- **neovim**: Text editor
+- **scripts**: Make custom scripts executable
+
+### Bootstrap Instructions to Test inside Docker
+
+To test the setup inside a Docker container:
 
 ```bash
 docker build -t test-dev .
-```
-
-Then run the container with:
-
-```bash
 docker run --rm -it --name test-config test-dev
 ```
 
