@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pushd ~/dev/personal/nvim/
+git add .
+git commit -m 'automated dev commit'
+git push
+popd
+
+pushd ~/dev/personal/dotfiles/
+git add .
+git commit -m 'automated dev commit'
+git push
+popd
