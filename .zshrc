@@ -86,3 +86,8 @@ migrate() {
 
 # Custom scripts from dotfiles
 export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
+
+psg () {
+  echo 'USER         PID %CPU  %MEM   VSZ   RSS TTY      STAT START    TIME COMMAND'
+  ps aux | grep "$@" --color=always | grep -v grep
+}
