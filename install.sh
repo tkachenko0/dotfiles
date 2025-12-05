@@ -21,7 +21,8 @@ MODULES=(
 
 run_module() {
     local module="$1"
-    local module_file="$MODULES_DIR/$module.sh"
+    local module_dir="$MODULES_DIR/$module"
+    local module_file="$module_dir/install.sh"
     
     if [ ! -f "$module_file" ]; then
         echo "Module $module not found"

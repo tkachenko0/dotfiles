@@ -10,4 +10,4 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 rm ~/.zshrc
-ln -s ~/dev/personal/dotfiles/.zshrc ~/.zshrc
+ln -s $(dirname "$0")/.zshrc ~/.zshrc
