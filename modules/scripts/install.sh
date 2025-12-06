@@ -2,4 +2,4 @@
 
 set -e
 
-chmod +x ~/dev/personal/dotfiles/scripts/*
+sudo chmod +x "$DOTFILES_DIR/scripts"/*

@@ -10,7 +10,7 @@ sudo apt install -y zsh
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-chsh -s "$(which zsh)"
+# chsh -s "$(which zsh)"
 
 # Install plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -18,4 +18,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Remove oh-my-zsh created .zshrc and link our custom one
 ( [ -e ~/.zshrc ] || [ -L ~/.zshrc ] ) && rm ~/.zshrc
-ln -s $(dirname "$0")/.zshrc ~/.zshrc
+ln -s "$DOTFILES_DIR/modules/zsh/.zshrc" ~/.zshrc
