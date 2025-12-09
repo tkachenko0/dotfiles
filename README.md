@@ -4,25 +4,11 @@
 
 This repository contains my personal dotfiles and development environment setup.
 
-To pull all the repo:
-
-```bash
-git clone --recurse-submodules https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
-```
-
-To update the submodules after cloning:
-
-```bash
-git submodule update --remote --merge
-git add .
-git push
-```
-
 ## Installation
 
 ```bash
-# Clone the repository
-git clone --recurse-submodules git@github.com:tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+git clone https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+
 cd ~/dev/personal/dotfiles
 
 # Install everything
