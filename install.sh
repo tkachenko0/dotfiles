@@ -2,11 +2,10 @@
 
 set -e
 
-# Colors
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODULES_DIR="$DOTFILES_DIR/modules"
@@ -20,7 +19,6 @@ MODULES=(
     "zsh"
     "homebrew"
     "delta"
-    "starship"
     "tmux"
     "nvm"
     "pyenv"

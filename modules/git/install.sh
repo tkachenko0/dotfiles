@@ -4,7 +4,6 @@ set -e
 
 sudo apt install -y git
 
-# Use config values or prompt
 if [ -z "$GIT_USERNAME" ] || [ -z "$GIT_EMAIL" ]; then
     read -p "Enter your Git username: " git_username
     read -p "Enter your Git email: " git_email
