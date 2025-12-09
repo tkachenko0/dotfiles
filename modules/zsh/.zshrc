@@ -37,6 +37,18 @@ export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$HOME/dotnet
 export PATH="$PATH:/home/viacheslav/.dotnet/tools"
 
+add-migration() {
+  dotnet ef migrations add "$1" \
+    --project GestioneEE.Api.Net.Repositories \
+    --startup-project GestioneEE.Api.Net.Web
+}
+
+migrate() {
+  dotnet ef database update \
+    --project GestioneEE.Api.Net.Repositories \
+    --startup-project GestioneEE.Api.Net.Web
+}
+
 # Git aliases
 alias gs="git status"
 alias grs="git restore . && git status"
@@ -71,18 +83,6 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
-
-add-migration() {
-  dotnet ef migrations add "$1" \
-    --project GestioneEE.Api.Net.Repositories \
-    --startup-project GestioneEE.Api.Net.Web
-}
-
-migrate() {
-  dotnet ef database update \
-    --project GestioneEE.Api.Net.Repositories \
-    --startup-project GestioneEE.Api.Net.Web
-}
 
 # Custom scripts from dotfiles
 export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
