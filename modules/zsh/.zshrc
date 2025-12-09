@@ -18,6 +18,10 @@ alias diff="git diff"
 alias v="nvim"
 alias lsa="ls -la"
 
+# Brew
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$BREW_HOME"
+
 # Scripts
 export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
 
@@ -38,17 +42,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Brew
-export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-export PATH="$PATH:$BREW_HOME"
-
 # Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-
-# Neovim
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - zsh)"
 
 # Dotnet
 export DOTNET_ROOT=$HOME/dotnet
