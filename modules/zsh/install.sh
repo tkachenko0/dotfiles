@@ -10,7 +10,7 @@ sudo apt install -y zsh
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-# chsh -s "$(which zsh)"
+chsh -s "$(which zsh)"
 
 # Remove oh-my-zsh created .zshrc and link our custom one
 ( [ -e ~/.zshrc ] || [ -L ~/.zshrc ] ) && rm ~/.zshrc
