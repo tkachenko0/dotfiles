@@ -14,7 +14,7 @@ source $ZSH/oh-my-zsh.sh
 
 #  Aliases
 alias gs="git status"
-alias gg="git log --graph --abbrev-commit --decorate --branches --remotes --tags"
+alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
 alias lsa="ls -la"
