@@ -23,3 +23,4 @@ git config --global delta.side-by-side true
 git config --global delta.syntax-theme "Visual Studio Dark+"
 git config --global delta.hunk-header-style omit
 git config --global delta.dark true
+git config --global credential.helper store
