@@ -18,6 +18,7 @@ alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
 alias lsa="ls -la"
+alias lsa="kubectl -la"
 
 # Brew
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
