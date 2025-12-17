@@ -1,7 +1,7 @@
 # Oh my zsh configs
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 
 plugins=(
   git
@@ -11,6 +11,8 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+eval "$(starship init zsh)"
 
 #  Aliases
 alias gs="git status"
