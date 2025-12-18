@@ -19,6 +19,7 @@ MODULES=(
     "zsh"
     "homebrew"
     "delta"
+    "starship"
     "tmux"
     "nvm"
     "pyenv"
