@@ -1,3 +1,7 @@
+# Brew
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$BREW_HOME"
+
 # Oh my zsh configs
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -20,10 +24,6 @@ alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
 alias lsa="ls -la"
-
-# Brew
-export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-export PATH="$PATH:$BREW_HOME"
 
 # Scripts
 export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
