@@ -26,6 +26,8 @@ alias v="nvim"
 alias lsa="ls -la"
 alias k=kubectl
 
+source ~/.kubectl-completion.zsh
+
 # Scripts
 export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
 
