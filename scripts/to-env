@@ -2,72 +2,12 @@
 
 set -euo pipefail
 
-# =====================
-# Defaults
-# =====================
 FROM_HOST_REGEX="${FROM_HOST_REGEX:-.*\.svc\.cluster\.local}"
 TO_HOST="${TO_HOST:-host.docker.internal}"
 FROM_PROTOCOL="${FROM_PROTOCOL:-http}"
 TO_PROTOCOL="${TO_PROTOCOL:-http}"
 
-# =====================
-# Usage
-# =====================
-usage() {
-  cat <<EOF
-Usage:
-  cat config.json | $0 [options]
-
-Options (env vars or flags):
-  --from-host REGEX       Regex for source host (default: $FROM_HOST_REGEX)
-  --to-host HOST          Target host (default: $TO_HOST)
-  --from-protocol PROTO   Source protocol (default: $FROM_PROTOCOL)
-  --to-protocol PROTO     Target protocol (default: $TO_PROTOCOL)
-
-Example:
-  cat config.json | $0 \
-    --from-host '.*my-namespace\.svc\.cluster\.local' \
-    --to-host 'localhost'
-EOF
-  exit 1
-}
-
-# =====================
-# Args parsing
-# =====================
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --from-host)
-      FROM_HOST_REGEX="$2"
-      shift 2
-      ;;
-    --to-host)
-      TO_HOST="$2"
-      shift 2
-      ;;
-    --from-protocol)
-      FROM_PROTOCOL="$2"
-      shift 2
-      ;;
-    --to-protocol)
-      TO_PROTOCOL="$2"
-      shift 2
-      ;;
-    -h|--help)
-      usage
-      ;;
-    *)
-      echo "Unknown option: $1"
-      usage
-      ;;
-  esac
-done
-
-# =====================
-# Transformation
-# =====================
 jq \
 | yq -P \
 | sed 's/: /=/' \
 | sed -E "s|${FROM_PROTOCOL}://(${FROM_HOST_REGEX})|${TO_PROTOCOL}://${TO_HOST}|g"
-
