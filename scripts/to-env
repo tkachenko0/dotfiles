@@ -26,7 +26,7 @@ Options (env vars or flags):
 
 Example:
   cat config.json | $0 \
-    --from-host '.*geopslive\.svc\.cluster\.local' \
+    --from-host '.*my-namespace\.svc\.cluster\.local' \
     --to-host 'localhost'
 EOF
   exit 1
