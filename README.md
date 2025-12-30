@@ -1,7 +1,5 @@
 # Dotfiles
 
-[![Made with ÔØñ´©Å in Neovim](https://img.shields.io/badge/Made%20with-%E2%9D%A4%EF%B8%8F%20in%20Neovim-57A143?style=for-the-badge&logo=neovim&logoColor=white)](https://neovim.io/)
-
 This repository contains my personal dotfiles and development environment setup.
 
 ## Installation
