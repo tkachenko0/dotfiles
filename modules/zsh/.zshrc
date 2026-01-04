@@ -57,3 +57,6 @@ eval "$(pyenv init - zsh)"
 export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$HOME/dotnet
 export PATH="$PATH:/home/viacheslav/.dotnet/tools"
+
+# Kiro cli
+PATH="$HOME/.local/bin:$PATH"
