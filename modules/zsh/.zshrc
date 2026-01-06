@@ -15,8 +15,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# eval "$(starship init zsh)"
-
 #  Aliases
 alias gs="git status"
 alias gg="git log --graph --oneline --abbrev-commit --decorate"
