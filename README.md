@@ -31,15 +31,6 @@ cd ~/dev/personal/dotfiles
 - **neovim**: Text editor
 - **scripts**: Make custom scripts executable
 
-### Bootstrap Instructions to Test inside Docker
-
-To test the setup inside a Docker container:
-
-```bash
-docker build -t test-dev .
-docker run --rm -it --name test-config test-dev
-```
-
 ## Neovim Configuration
 
 A submodule that contains my Neovim configuration.
