@@ -15,4 +15,3 @@ if [[ "$branch" == remotes/* ]]; then
 else
   git checkout "$branch"
 fi
-

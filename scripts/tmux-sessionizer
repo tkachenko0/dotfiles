@@ -28,4 +28,3 @@ if [[ -n $TMUX ]]; then
 else
     tmux attach-session -t "$project_name"
 fi
-

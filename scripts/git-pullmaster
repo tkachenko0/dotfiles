@@ -31,4 +31,3 @@ for repo_dir in "${!unique_repos[@]}"; do
 
     cd - > /dev/null || exit 1
 done
-

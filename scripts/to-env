@@ -2,8 +2,11 @@
 
 set -euo pipefail
 
-# Usage
-# k get cm my-cm -n my-ns -o jsonpath='{.data}' | to-env
+if [ -t 0 ] && [ $# -eq 0 ]; then
+    echo "Usage: k get cm my-cm -n my-ns -o jsonpath='{.data}' | to-env"
+    echo "Converts JSON/YAML to environment variables format"
+    exit 1
+fi
 
 FROM_HOST_REGEX="${FROM_HOST_REGEX:-.*\.svc\.cluster\.local}"
 TO_HOST="${TO_HOST:-host.docker.internal}"
