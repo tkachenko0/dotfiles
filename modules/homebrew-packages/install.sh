@@ -1,3 +1,5 @@
 #!/bin/bash
 
-brew install yq
+brew install \
+    yq \
+    hurl
