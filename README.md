@@ -31,6 +31,12 @@ cd ~/dev/personal/dotfiles
 - **neovim**: Text editor
 - **scripts**: Make custom scripts executable
 
+## API Testing
+
+Simple curl-based API testing framework for quick HTTP requests.
+
+See [example-api/README.md](example-api/README.md) for usage examples.
+
 ## Neovim Configuration
 
 A submodule that contains my Neovim configuration.
