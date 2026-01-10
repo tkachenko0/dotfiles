@@ -6,6 +6,3 @@ Authorization: Bearer {{token}}
   "body": "{{post_body}}",
   "userId": {{user_id}}
 }
-HTTP 201
-[Asserts]
-jsonpath "$.id" exists

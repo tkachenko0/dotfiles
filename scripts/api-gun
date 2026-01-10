@@ -26,8 +26,6 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [ -z "$REQUEST" ]; then
-    echo "Simple API Testing"
-    echo ""
     echo "Usage:"
     echo "  api <request> --env <environment>"
     exit 0
