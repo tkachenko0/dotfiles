@@ -18,5 +18,6 @@ example-api/
 ## Usage
 
 ```bash
-./scripts/api get-posts --env demo
+./scripts/api-gun get-posts --env demo
+./scripts/api-gun create-post --env demo
 ```
