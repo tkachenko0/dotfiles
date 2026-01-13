@@ -54,6 +54,9 @@ export NVM_DIR="$HOME/.nvm"
 export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$HOME/dotnet
 export PATH="$PATH:/home/viacheslav/.dotnet/tools"
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH="$DOTNET_ROOT:$PATH"
+
 
 # Kiro cli
 PATH="$HOME/.local/bin:$PATH"
