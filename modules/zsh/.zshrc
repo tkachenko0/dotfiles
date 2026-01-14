@@ -22,7 +22,11 @@ alias diff="git diff"
 alias v="nvim"
 alias lsa="ls -la"
 alias k=kubectl
-alias hurl="hurl --insecure --variables-file environments/$GEE_ENV.env --verbose"
+
+hurll() {
+  hurl --insecure --variables-file "environments/${GEE_ENV}.env" --verbose "$@"
+}
+
 
 source ~/.kubectl-completion.zsh
 
