@@ -24,7 +24,7 @@ alias lsa="ls -la"
 alias k=kubectl
 
 hurll() {
-  hurl --insecure --variables-file "environments/${GEE_ENV}.env" --verbose "$@"
+  hurl --insecure --variables-file "environments/${HURL_ENV}.env" --verbose "$@"
 }
 
 source ~/.kubectl-completion.zsh
