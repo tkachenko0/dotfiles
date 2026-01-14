@@ -27,7 +27,6 @@ hurll() {
   hurl --insecure --variables-file "environments/${GEE_ENV}.env" --verbose "$@"
 }
 
-
 source ~/.kubectl-completion.zsh
 
 # Scripts
