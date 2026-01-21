@@ -24,7 +24,6 @@ cd ~/dev/personal/dotfiles
 - **zsh**: Zsh with oh-my-zsh and plugins
 - **homebrew**: Package manager (macOS)
 - **delta**: Git diff viewer
-- **starship**: Shell prompt
 - **tmux**: Terminal multiplexer
 - **nvm**: Node.js version manager
 - **pyenv**: Python version manager

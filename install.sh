@@ -19,7 +19,6 @@ MODULES=(
     "homebrew"
     "homebrew-packages"
     "delta"
-    "starship"
     "tmux"
     "nvm"
     "pyenv"
