@@ -5,6 +5,12 @@ This repository contains my personal dotfiles and development environment setup.
 ## Installation
 
 ```bash
+
+useradd -m viacheslav
+passwd viacheslav
+usermod -aG sudo viacheslav
+su - viacheslav
+
 git clone https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
 
 cd ~/dev/personal/dotfiles
