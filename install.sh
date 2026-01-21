@@ -17,7 +17,6 @@ MODULES=(
     "git" 
     "zsh"
     "homebrew"
-    "homebrew-packages"
     "delta"
     "tmux"
     "nvm"
