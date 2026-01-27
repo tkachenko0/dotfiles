@@ -37,7 +37,6 @@ run_module() {
     
     echo -e "${BLUE}Installing $module...${NO_COLOR}"
     export DOTFILES_DIR
-    export GIT_USERNAME
     export GIT_EMAIL
     bash "$module_file"
 }

@@ -4,16 +4,30 @@ set -e
 
 sudo apt install -y git
 
-if [ -z "$GIT_USERNAME" ] || [ -z "$GIT_EMAIL" ]; then
-    read -p "Enter your Git username: " git_username
+if [ -z "$GIT_EMAIL" ]; then
     read -p "Enter your Git email: " git_email
 else
-    git_username="$GIT_USERNAME"
     git_email="$GIT_EMAIL"
 fi
 
-git config --global user.name "$git_username"
-git config --global user.email "$git_email"
+git config --global user.name v.tkachenko
+git config --global user.email $git_email
 git config --global init.defaultBranch main
-git config --global core.editor "nvim"
+git config --global core.editor nvim
 git config --global credential.helper store
+git config --global pull.rebase true
+git config --global commit.template ~/.gitmessage
+
+cat <<'EOF' > ~/.gitmessage
+feat(scope): summary
+
+#   feat     - new feature
+#   fix      - bug fix
+#   refactor - code change that neither fixes a bug nor adds a feature
+#   perf     - performance improvement
+#   test     - adding or fixing tests
+#   docs     - documentation only
+#   chore    - tooling, config, deps
+#   ci       - CI/CD changes
+#   build    - build system changes
+EOF
