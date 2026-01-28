@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+PACKAGE_NAME="$1"
+NEW_VERSION="$2"
+
+if [[ -z "$PACKAGE_NAME" || -z "$NEW_VERSION" ]]; then
+  echo "Usage: $0 <PackageName> <NewVersion>"
+  exit 1
+fi
+
+rg "Include=\"$PACKAGE_NAME\"" -l | while read -r file; do
+  sed -i -E \
+    "s|(Include=\"$PACKAGE_NAME\"[^>]*Version=\")[^\"]+|\1$NEW_VERSION|g" \
+    "$file"
+done
