@@ -56,6 +56,7 @@ Includes a configured `~/.tmux.conf` for a terminal multiplexing experience with
 `.tmux-windows` example:
 
 ```bash
+#!/bin/bash
 rename-window frontend
 send-keys 'cd ~/dev/proj/micros1/' C-m
 send-keys 'nvim' C-m
