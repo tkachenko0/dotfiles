@@ -13,7 +13,6 @@ fi
 git config --global user.name v.tkachenko
 git config --global user.email $git_email
 git config --global init.defaultBranch main
-git config --global core.editor nvim
 git config --global credential.helper store
 git config --global pull.rebase true
 git config --global commit.template ~/.gitmessage

@@ -23,6 +23,10 @@ alias v="nvim"
 alias lsa="ls -la"
 alias k=kubectl
 
+# Environment variables
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 hurll() {
   hurl --insecure --variables-file "environments/${HURL_ENV}.env" "$@"
 }

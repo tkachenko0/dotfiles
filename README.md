@@ -27,12 +27,14 @@ cd ~/dev/personal/dotfiles
 
 - **core**: Essential packages (build tools, curl, fzf, ripgrep)
 - **git**: Git configuration
+- **ssh**: SSH config and key management
 - **zsh**: Zsh with oh-my-zsh and plugins
 - **homebrew**: Package manager (macOS)
 - **delta**: Git diff viewer
 - **tmux**: Terminal multiplexer
 - **nvm**: Node.js version manager
 - **pyenv**: Python version manager
+- **dotnet**: .NET SDK
 - **neovim**: Text editor
 - **scripts**: Make custom scripts executable
 
