@@ -53,29 +53,18 @@ Custom `~/.zshrc` with plugins and theming using [oh-my-zsh](https://ohmyz.sh/),
 
 Includes a configured `~/.tmux.conf` for a terminal multiplexing experience with custom keybindings and visuals.
 
-`.tmux-windows` example:
+## Makefile Template
+
+A Makefile template for project development workflow:
 
 ```bash
-#!/bin/bash
-rename-window frontend
-send-keys 'cd ~/dev/proj/micros1/' C-m
-send-keys 'nvim' C-m
-
-new-window -n build
-send-keys 'cd ~/dev/proj/micros1/' C-m
-send-keys 'nvm use' C-m
-send-keys 'npm run dev' C-m
-
-select-window -t build
-split-window -h
-send-keys 'cd ~/dev/proj/micros1/' C-m
-
-select-window -t frontend
+cp ~/dev/personal/dotfiles/templates/Makefile /path/to/your/project/
 ```
 
-```bash
-tmux source-file ../.tmux-windows
-```
+Usage:
+- `make dev` - Start development environment
+- `make test` - Run tests
+- `make build` - Build project
 
 ## Node.js, nvm and npm
 
