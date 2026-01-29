@@ -16,11 +16,11 @@ git clone https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
 cd ~/dev/personal/dotfiles
 
 # Install everything
-./install.sh all
+./setup all
 
 # Or install specific module
-./install.sh zsh
-./install.sh neovim
+./setup zsh
+./setup neovim
 ```
 
 ### Available Modules
@@ -62,6 +62,7 @@ cp ~/dev/personal/dotfiles/templates/Makefile /path/to/your/project/
 ```
 
 Usage:
+
 - `make dev` - Start development environment
 - `make test` - Run tests
 - `make build` - Build project
