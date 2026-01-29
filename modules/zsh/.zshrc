@@ -55,12 +55,8 @@ export NVM_DIR="$HOME/.nvm"
 # eval "$(pyenv init - zsh)"
 
 # Dotnet
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$HOME/dotnet
-export PATH="$PATH:/home/viacheslav/.dotnet/tools"
 export DOTNET_ROOT="$HOME/.dotnet"
-export PATH="$DOTNET_ROOT:$PATH"
-
+export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
 # Kiro cli
 PATH="$HOME/.local/bin:$PATH"
