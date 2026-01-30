@@ -28,7 +28,7 @@ cd ~/dev/personal/dotfiles
 - **core**: Essential packages (build tools, curl, fzf, ripgrep)
 - **git**: Git configuration
 - **ssh**: SSH config and key management
-- **zsh**: Zsh with oh-my-zsh and plugins
+- **zsh**: Zsh with and plugins
 - **homebrew**: Package manager (macOS)
 - **delta**: Git diff viewer
 - **tmux**: Terminal multiplexer
@@ -49,7 +49,7 @@ Link to the submodule: [neovim-config](https://github.com/tkachenko0/nvim)
 
 ## Zsh
 
-Custom `~/.zshrc` with plugins and theming using [oh-my-zsh](https://ohmyz.sh/), syntax highlighting, autosuggestions, and more.
+Custom `~/.zshrc` with plugins and theming
 
 ## Tmux
 
