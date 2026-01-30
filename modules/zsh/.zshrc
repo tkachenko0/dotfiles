@@ -2,18 +2,16 @@
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$BREW_HOME"
 
-# Oh my zsh configs
-export ZSH="$HOME/.oh-my-zsh"
+# Prompt
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' (%b)'
+setopt PROMPT_SUBST
+PROMPT='%F{blue}%~%f%F{magenta}${vcs_info_msg_0_}%f
+%F{green}➜%f '
 
-ZSH_THEME="robbyrussell"
-
-plugins=(
-  z
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
-
-source $ZSH/oh-my-zsh.sh
+source ~/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 #  Aliases
 alias gs="git status"
