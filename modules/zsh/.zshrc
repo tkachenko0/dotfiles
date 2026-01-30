@@ -57,7 +57,12 @@ fzf-history-widget() {
   zle reset-prompt
 }
 zle -N fzf-history-widget
-bindkey '^R' fzf-history-widget        
+bindkey '^R' fzf-history-widget
+
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[3;3~' kill-word
+bindkey '^[^?' backward-kill-word        
 
 # Node
 # export NVM_DIR="$HOME/.nvm"
