@@ -10,12 +10,7 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 
-# Prompt
-autoload -Uz vcs_info
-precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' (%b)'
-setopt PROMPT_SUBST
-PROMPT='%F{blue}%~%f%F{magenta}${vcs_info_msg_0_}%f %F{green}➜%f '
+eval "$(starship init zsh)"
 
 # Plugins
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
