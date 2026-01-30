@@ -6,9 +6,8 @@ sudo apt install -y zsh
 chsh -s "$(which zsh)"
 
 # Install plugins
-ZSH_CUSTOM_PLUGINS=$HOME/.zsh-plugins
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM_PLUGINS}/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM_PLUGINS}/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 
 # Remove oh-my-zsh created .zshrc and link our custom one
 ( [ -e ~/.zshrc ] || [ -L ~/.zshrc ] ) && rm ~/.zshrc
