@@ -31,8 +31,6 @@ hurll() {
   hurl --insecure --variables-file "environments/${HURL_ENV}.env" "$@"
 }
 
-source ~/.kubectl-completion.zsh
-
 # Scripts
 export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
 
