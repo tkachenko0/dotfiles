@@ -17,3 +17,7 @@ curl -sS https://starship.rs/install.sh | sh -s -- -y
 # Remove oh-my-zsh created .zshrc and link our custom one
 ( [ -e ~/.zshrc ] || [ -L ~/.zshrc ] ) && rm ~/.zshrc
 ln -s "$DOTFILES_DIR/modules/zsh/.zshrc" ~/.zshrc
+
+mkdir -p ~/.config
+( [ -e ~/.config/starship.toml ] || [ -L ~/.config/starship.toml ] ) && rm ~/.config/starship.toml
+ln -s "$DOTFILES_DIR/modules/zsh/starship.toml" ~/.config/starship.toml
