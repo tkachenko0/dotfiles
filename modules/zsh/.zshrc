@@ -43,3 +43,34 @@ alias k=kubectl
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# Scripts
+export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
+
+bindkey -s '^F' 'tmux-sessionizer\n'        
+bindkey -s '^B' 'git-branch-switcher\n'     
+bindkey -s '^P' 'git-pullmaster\n'          
+bindkey -s '^A' 'git-stash-lister\n'
+fzf-history-widget() {
+  BUFFER=$(fzf-history)
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N fzf-history-widget
+bindkey '^R' fzf-history-widget        
+
+# Node
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Pyenv
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - zsh)"
+
+# Dotnet
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
+
+# Kiro cli
+PATH="$HOME/.local/bin:$PATH"
