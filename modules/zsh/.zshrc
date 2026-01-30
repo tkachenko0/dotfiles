@@ -20,6 +20,7 @@ PROMPT='%F{blue}%~%f%F{magenta}${vcs_info_msg_0_}%f %F{green}➜%f '
 # Plugins
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(zoxide init zsh)"
 
 # Auto cd
 setopt AUTO_CD
