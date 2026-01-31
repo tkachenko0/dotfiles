@@ -1,3 +1,0 @@
-#!/bin/bash
-
-tac ~/.zsh_history | cut -d';' -f2- | fzf --reverse

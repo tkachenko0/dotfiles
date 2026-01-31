@@ -45,7 +45,7 @@ bindkey -s '^B' 'git-branch-switcher\n'
 bindkey -s '^P' 'git-pullmaster\n'          
 bindkey -s '^A' 'git-stash-lister\n'
 fzf-history-widget() {
-  BUFFER=$(fzf-history)
+  BUFFER=$(tac ~/.zsh_history | cut -d';' -f2- | fzf --reverse)
   CURSOR=$#BUFFER
   zle reset-prompt
 }
