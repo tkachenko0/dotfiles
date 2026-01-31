@@ -33,7 +33,6 @@ session_idx=""
 session_cmd=""
 user_selected=""
 split_type=""
-VERSION="0.1.0"
 
 while [[ "$#" -gt 0 ]]; do
     case "$1" in
@@ -72,10 +71,6 @@ while [[ "$#" -gt 0 ]]; do
         ;;
     --hsplit)
         split_type="hsplit"
-        ;;
-    -v | --version)
-        echo "tmux-sessionizer version $VERSION"
-        exit 0
         ;;
     *)
         user_selected="$1"
