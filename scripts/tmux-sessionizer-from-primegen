@@ -174,7 +174,6 @@ cleanup_dead_panes() {
 
 sanity_check
 
-# if TS_SEARCH_PATHS is not set use default
 [[ -n "$TS_SEARCH_PATHS" ]] || TS_SEARCH_PATHS=(~/ ~/personal ~/personal/dev/env/.config)
 
 # utility function to find directories
