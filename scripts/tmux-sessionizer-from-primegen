@@ -11,7 +11,6 @@ PANE_CACHE_FILE="$PANE_CACHE_DIR/panes.cache"
 # TS_SEARCH_PATHS=(~/)
 # # If set this add additional search paths to the default TS_SEARCH_PATHS
 # # The number prefix is the depth for the Path [OPTIONAL]
-# TS_EXTRA_SEARCH_PATHS=(~/ghq:3 ~/Git:3 ~/.config:2)
 # # if set this override the TS_MAX_DEPTH (1)
 # TS_MAX_DEPTH=2
 # This is not meant to override .tmux-sessionizer.  At first i thought this
@@ -183,14 +182,6 @@ sanity_check
 
 # if TS_SEARCH_PATHS is not set use default
 [[ -n "$TS_SEARCH_PATHS" ]] || TS_SEARCH_PATHS=(~/ ~/personal ~/personal/dev/env/.config)
-
-# Add any extra search paths to the TS_SEARCH_PATHS array
-# e.g : EXTRA_SEARCH_PATHS=("$HOME/extra1:4" "$HOME/extra2")
-# note : Path can be suffixed with :number to limit or extend the depth of the search for the Path
-
-if [[ ${#TS_EXTRA_SEARCH_PATHS[@]} -gt 0 ]]; then
-    TS_SEARCH_PATHS+=("${TS_EXTRA_SEARCH_PATHS[@]}")
-fi
 
 # utility function to find directories
 find_dirs() {
