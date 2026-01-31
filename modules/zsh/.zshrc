@@ -52,7 +52,15 @@ bindkey '^R' fzf-history-widget
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 bindkey '^[[3;3~' kill-word
-bindkey '^[^?' backward-kill-word        
+bindkey '^[^?' backward-kill-word
+
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+bindkey "^[OA" history-beginning-search-backward-end
+bindkey "^[OB" history-beginning-search-forward-end        
 
 # Node
 # export NVM_DIR="$HOME/.nvm"
