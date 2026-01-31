@@ -79,9 +79,6 @@ bindkey "^[OB" history-beginning-search-forward-end
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
-# Kiro cli
-PATH="$HOME/.local/bin:$PATH"
-
 # Plugins
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
