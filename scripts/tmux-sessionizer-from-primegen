@@ -79,7 +79,6 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-# Validate split options are only used with session commands
 if [[ -n "$split_type" && -z "$session_idx" ]]; then
     echo "Error: --vsplit and --hsplit can only be used with -s/--session option"
     exit 1
