@@ -15,15 +15,18 @@ eval "$(starship init zsh)"
 # Auto cd
 setopt AUTO_CD
 
+# Completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+bindkey '^[[Z' reverse-menu-complete
+
 #  Aliases
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias ls="ls --color=auto"
 alias lsa="ls -la"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
 alias gs="git status"
 alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
