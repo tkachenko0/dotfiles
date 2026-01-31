@@ -52,6 +52,9 @@ fzf-history-widget() {
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
 
+autoload -U select-word-style
+select-word-style bash
+
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 bindkey '^[[3;3~' kill-word
