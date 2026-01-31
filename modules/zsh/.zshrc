@@ -12,11 +12,6 @@ setopt HIST_IGNORE_SPACE
 
 eval "$(starship init zsh)"
 
-# Plugins
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-eval "$(zoxide init zsh)"
-
 # Auto cd
 setopt AUTO_CD
 
@@ -75,3 +70,8 @@ export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
 # Kiro cli
 PATH="$HOME/.local/bin:$PATH"
+
+# Plugins
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+eval "$(zoxide init zsh)"
