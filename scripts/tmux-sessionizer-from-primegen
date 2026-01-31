@@ -85,18 +85,6 @@ if [[ -n "$split_type" && -z "$session_idx" ]]; then
     exit 1
 fi
 
-sanity_check() {
-    if ! command -v tmux &>/dev/null; then
-        echo "tmux is not installed. Please install it first."
-        exit 1
-    fi
-
-    if ! command -v fzf &>/dev/null; then
-        echo "fzf is not installed. Please install it first."
-        exit 1
-    fi
-}
-
 switch_to() {
     if [[ -z $TMUX ]]; then
         tmux attach-session -t "$1"
