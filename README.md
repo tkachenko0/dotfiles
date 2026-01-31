@@ -55,20 +55,6 @@ Custom `~/.zshrc` with plugins and theming
 
 Includes a configured `~/.tmux.conf` for a terminal multiplexing experience with custom keybindings and visuals.
 
-## Makefile Template
-
-A Makefile template for project development workflow:
-
-```bash
-cp ~/dev/personal/dotfiles/templates/Makefile /path/to/your/project/
-```
-
-Usage:
-
-- `make dev` - Start development environment
-- `make test` - Run tests
-- `make build` - Build project
-
 ## Node.js, nvm and npm
 
 Used for Node.js version management, with setup for installing and using the latest LTS version.
