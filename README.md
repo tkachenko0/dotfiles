@@ -18,7 +18,7 @@ cd ~/dev/personal/dotfiles
 # Install everything
 ./setup all
 
-# Or install specific module
+# Or install a specific module
 ./setup zsh
 ./setup neovim
 ```
