@@ -31,13 +31,22 @@ if ! tmux has-session -t "$project_name" 2>/dev/null; then
         tmux send-keys -t "$project_name" "source $proj_tmux_sessionizer" C-m
     fi
 else
-    if ! tmux list-windows -t "$project_name" -F "#{window_active}:#{pane_current_path}" | grep -q "$selected"; then
+    window_index=$(tmux list-windows -t "$project_name" -F "#{window_index}:#{pane_current_path}" | grep ":$selected$" | head -1 | cut -d: -f1)
+    if [[ -z $window_index ]]; then
         tmux new-window -t "$project_name:" -c "$selected"
     fi
 fi
 
 if [[ -n $TMUX ]]; then
-    tmux switch-client -t "$project_name"
+    if [[ -n $window_index ]]; then
+        tmux switch-client -t "$project_name:$window_index"
+    else
+        tmux switch-client -t "$project_name"
+    fi
 else
-    tmux attach-session -t "$project_name"
+    if [[ -n $window_index ]]; then
+        tmux attach-session -t "$project_name:$window_index"
+    else
+        tmux attach-session -t "$project_name"
+    fi
 fi
