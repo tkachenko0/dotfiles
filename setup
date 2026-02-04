@@ -20,7 +20,7 @@ MODULES=(
     "homebrew"
     "delta"
     "tmux"
-    "nvm"
+    "fnm"
     "pyenv"
     "dotnet"
     "neovim"
