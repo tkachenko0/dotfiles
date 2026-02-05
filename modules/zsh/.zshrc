@@ -12,7 +12,18 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 
-eval "$(starship init zsh)"
+autoload -Uz vcs_info
+precmd() { 
+  vcs_info
+  if [[ -n "$AWS_PROFILE" ]]; then
+    AWS_INFO=" %F{214}☁  $AWS_PROFILE%f"
+  else
+    AWS_INFO=""
+  fi
+}
+zstyle ':vcs_info:git:*' formats ' %F{141}%b%f'
+setopt PROMPT_SUBST
+PROMPT='%F{117}%~%f${vcs_info_msg_0_}${AWS_INFO} %F{84}❯%f '
 
 # Auto cd
 setopt AUTO_CD
