@@ -73,7 +73,6 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[3;3~' kill-word
 bindkey '^[^?' backward-kill-word
 
-
 # Node
 eval "$(fnm env --use-on-cd --shell zsh)"
 
