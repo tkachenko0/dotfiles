@@ -2,9 +2,9 @@
 
 set -e
 
-sudo apt install -y ripgrep luarocks
+sudo apt install -y ripgrep
 
-brew install neovim
+brew install neovim luarocks
 
 rm -rf "$DOTFILES_DIR/../nvim"
 git clone https://github.com/tkachenko0/nvim.git "$DOTFILES_DIR/../nvim"

@@ -1,6 +1,6 @@
 # Brew
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-export PATH="$PATH:$BREW_HOME"
+export PATH="$BREW_HOME:$PATH"
 
 # History
 HISTFILE=~/.zsh_history
