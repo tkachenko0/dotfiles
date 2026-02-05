@@ -7,8 +7,10 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
 
 eval "$(starship init zsh)"
 
@@ -45,7 +47,7 @@ bindkey -s '^B' 'git-branch-switcher\n'
 bindkey -s '^P' 'git-pullmaster\n'          
 bindkey -s '^A' 'git-stash-lister\n'
 fzf-history-widget() {
-  BUFFER=$(tac ~/.zsh_history | cut -d';' -f2- | fzf --reverse)
+  BUFFER=$(tac ~/.zsh_history | cut -d';' -f2- | awk '!seen[$0]++' | fzf --reverse)
   CURSOR=$#BUFFER
   zle reset-prompt
 }
@@ -60,13 +62,6 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[3;3~' kill-word
 bindkey '^[^?' backward-kill-word
 
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end
-bindkey "^[[B" history-beginning-search-forward-end
-bindkey "^[OA" history-beginning-search-backward-end
-bindkey "^[OB" history-beginning-search-forward-end        
 
 # Node
 eval "$(fnm env --use-on-cd --shell zsh)"
