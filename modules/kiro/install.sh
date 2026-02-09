@@ -8,10 +8,14 @@ KIR_DIR=~/.kiro
 
 mkdir -p $KIR_DIR
 
-rm -rf "$KIR_DIR/settings"
-ln -s "$DOTFILES_DIR/modules/kiro/settings" "$KIR_DIR/settings"
+link_kiro_folder() {
+    folder_name="$1"
+    rm -rf "${KIR_DIR}/${folder_name}"
+    ln -s "${DOTFILES_DIR}/modules/kiro/${folder_name}" "${KIR_DIR}/${folder_name}"
+}
 
-rm -rf "$KIR_DIR/steering"
-ln -s "$DOTFILES_DIR/modules/kiro/steering" "$KIR_DIR/steering"
+link_kiro_folder "prompts"
+link_kiro_folder "steering"
+link_kiro_folder "settings"
 
 kiro-cli --version
