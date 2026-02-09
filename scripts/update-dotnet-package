@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
 PACKAGE_NAME="$1"
 NEW_VERSION="$2"

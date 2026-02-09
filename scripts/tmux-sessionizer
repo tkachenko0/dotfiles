@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 if ! command -v tmux &>/dev/null; then
     echo "tmux is not installed. Please install it first."
     exit 1
@@ -12,14 +14,14 @@ fi
 
 selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf)
 
-[[ -z $selected ]] && exit 0
+[[ -z "$selected" ]] && exit 0
 
 project_dir=$(dirname "$selected")
 project_name=$(basename "$project_dir" | tr . _)
 
 tmux_running=$(pgrep tmux)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+if [[ -z "${TMUX:-}" ]] && [[ -z "$tmux_running" ]]; then
     tmux new-session -s "$project_name" -c "$selected"
     exit 0
 fi
@@ -27,24 +29,24 @@ fi
 if ! tmux has-session -t "$project_name" 2>/dev/null; then
     tmux new-session -ds "$project_name" -c "$selected"
     proj_tmux_sessionizer="$project_dir/.tmux-sessionizer"
-    if [[ -f $proj_tmux_sessionizer ]]; then
+    if [[ -f "$proj_tmux_sessionizer" ]]; then
         tmux send-keys -t "$project_name" "source $proj_tmux_sessionizer" C-m
     fi
 else
     window_index=$(tmux list-windows -t "$project_name" -F "#{window_index}:#{pane_current_path}" | grep ":$selected$" | head -1 | cut -d: -f1)
-    if [[ -z $window_index ]]; then
+    if [[ -z "$window_index" ]]; then
         tmux new-window -t "$project_name:" -c "$selected"
     fi
 fi
 
-if [[ -n $TMUX ]]; then
-    if [[ -n $window_index ]]; then
+if [[ -n "${TMUX:-}" ]]; then
+    if [[ -n "${window_index:-}" ]]; then
         tmux switch-client -t "$project_name:$window_index"
     else
         tmux switch-client -t "$project_name"
     fi
 else
-    if [[ -n $window_index ]]; then
+    if [[ -n "${window_index:-}" ]]; then
         tmux attach-session -t "$project_name:$window_index"
     else
         tmux attach-session -t "$project_name"
