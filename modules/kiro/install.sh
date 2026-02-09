@@ -13,3 +13,5 @@ ln -s "$DOTFILES_DIR/modules/kiro/settings" "$KIR_DIR/settings"
 
 rm -rf "$KIR_DIR/steering"
 ln -s "$DOTFILES_DIR/modules/kiro/steering" "$KIR_DIR/steering"
+
+kiro-cli --version
