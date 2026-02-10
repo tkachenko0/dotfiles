@@ -17,6 +17,3 @@ wget https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh
 chmod +x /tmp/dotnet-install.sh
 /tmp/dotnet-install.sh --version "$DOTNET_VERSION" --install-dir "$DOTNET_DIR"
 rm /tmp/dotnet-install.sh
-
-echo ".NET SDK installed successfully"
-dotnet --version
