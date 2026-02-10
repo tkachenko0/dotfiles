@@ -1,6 +1,6 @@
 # Brew
-# export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-# export PATH="$BREW_HOME:$PATH"
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+export PATH="$BREW_HOME:$PATH"
 
 # History
 HISTFILE=~/.zsh_history
@@ -96,17 +96,3 @@ PATH="$HOME/.cargo/bin:$PATH"
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(zoxide init zsh)"
-
-# fnm
-FNM_PATH="/home/viacheslav/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
-
-# fnm
-FNM_PATH="/home/viacheslav/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
