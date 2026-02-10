@@ -25,48 +25,15 @@ cd ~/dev/personal/dotfiles
 
 ### Available Modules
 
-- **core**: Essential packages (build tools, curl, fzf, ripgrep)
+- **core**: Essential packages (build tools, curl, fzf, ripgrep, jq, tree)
 - **git**: Git configuration
 - **ssh**: SSH config and key management
-- **zsh**: Zsh with and plugins
-- **homebrew**: Package manager (macOS)
+- **zsh**: Zsh with plugins
+- **dev-tools**: Development tools (Hurl, Terraform, Go, Rust)
 - **delta**: Git diff viewer
 - **tmux**: Terminal multiplexer
-- **nvm**: Node.js version manager
+- **fnm**: Node.js version manager
 - **pyenv**: Python version manager
 - **dotnet**: .NET SDK
 - **neovim**: Text editor
 - **scripts**: Make custom scripts executable
-
-## API Testing
-
-Simple curl-based API testing framework for quick HTTP requests.
-
-## Neovim Configuration
-
-A submodule that contains my Neovim configuration.
-Link to the submodule: [neovim-config](https://github.com/tkachenko0/nvim)
-
-## Zsh
-
-Custom `~/.zshrc` with plugins and theming
-
-## Tmux
-
-Includes a configured `~/.tmux.conf` for a terminal multiplexing experience with custom keybindings and visuals.
-
-## Node.js, nvm and npm
-
-Used for Node.js version management, with setup for installing and using the latest LTS version.
-
-## Pyenv
-
-Used to manage Python versions easily and reproducibly across projects.
-
-## Brew
-
-Used to manage packages
-
-## Custom scripts
-
-Custom CLI scripts are available in `scripts/` and include utilities for development, git, system tweaks, etc.
