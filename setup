@@ -13,7 +13,6 @@ MODULES_DIR="$DOTFILES_DIR/modules"
 MODULES=(
     "core"
     "git" 
-    "ssh"
     "zsh"
     "homebrew"
     "hurl"
