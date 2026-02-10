@@ -4,6 +4,8 @@ set -e
 
 sudo apt install -y ripgrep
 
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$BREW_HOME"
 brew install neovim luarocks
 
 cargo install --locked tree-sitter-cli
