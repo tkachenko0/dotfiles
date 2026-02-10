@@ -17,5 +17,3 @@ link_kiro_folder() {
 link_kiro_folder "prompts"
 link_kiro_folder "steering"
 link_kiro_folder "settings"
-
-kiro-cli --version
