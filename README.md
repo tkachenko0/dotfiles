@@ -15,6 +15,8 @@ git clone git@github.com:tkachenko0/dotfiles.git  ~/dev/personal/dotfiles
 
 cd  ~/dev/personal/dotfiles
 
+export GIT_EMAIL=your-email@email.com
+
 # Install everything
 ./setup all
 

@@ -7,7 +7,6 @@ DOTNET_DIR="$HOME/.dotnet"
 
 if [ -d "$DOTNET_DIR" ]; then
     echo ".NET already installed at $DOTNET_DIR"
-    dotnet --version
     exit 0
 fi
 
