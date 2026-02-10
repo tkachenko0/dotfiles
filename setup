@@ -18,6 +18,7 @@ MODULES=(
     "ssh"
     "zsh"
     "homebrew"
+    "hurl"
     "delta"
     "tmux"
     "fnm"
