@@ -27,6 +27,7 @@ MODULES=(
     "kiro"
     "scripts"
     "aws-cli"
+    "personal-dir"
 )
 
 run_module() {
