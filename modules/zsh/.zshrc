@@ -1,6 +1,6 @@
 # Brew
-export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-export PATH="$BREW_HOME:$PATH"
+# export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+# export PATH="$BREW_HOME:$PATH"
 
 # History
 HISTFILE=~/.zsh_history
@@ -80,9 +80,9 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 # Pyenv
-# export PYENV_ROOT="$HOME/.pyenv"
-# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init - zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
 # Dotnet
 export DOTNET_ROOT="$HOME/.dotnet"
