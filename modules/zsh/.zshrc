@@ -74,7 +74,10 @@ bindkey '^[[3;3~' kill-word
 bindkey '^[^?' backward-kill-word
 
 # Node
-eval "$(fnm env --use-on-cd --shell zsh)"
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+fi
 
 # Pyenv
 # export PYENV_ROOT="$HOME/.pyenv"
@@ -93,3 +96,17 @@ PATH="$HOME/.cargo/bin:$PATH"
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(zoxide init zsh)"
+
+# fnm
+FNM_PATH="/home/viacheslav/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
+# fnm
+FNM_PATH="/home/viacheslav/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi

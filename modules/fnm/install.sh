@@ -2,8 +2,11 @@
 
 set -e
 
-brew install fnm
+curl -fsSL https://fnm.vercel.app/install | bash
 
-eval "$(fnm env --use-on-cd)"
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+fi
 
 fnm install --lts
