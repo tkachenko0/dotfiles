@@ -51,8 +51,12 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
+# Request sudo access upfront
+sudo -v
+
 if [ "$1" = "all" ]; then
     for module in "${MODULES[@]}"; do
+        sudo -v  # Keep sudo alive
         run_module "$module"
     done
 elif [[ " ${MODULES[*]} " =~ " $1 " ]]; then
