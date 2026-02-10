@@ -11,9 +11,9 @@ passwd viacheslav
 usermod -aG sudo viacheslav
 su - viacheslav
 
-git clone git@github.com:tkachenko0/dotfiles.git
+git clone git@github.com:tkachenko0/dotfiles.git  ~/dev/personal/dotfiles
 
-cd ~/dev/personal/dotfiles
+cd  ~/dev/personal/dotfiles
 
 # Install everything
 ./setup all
