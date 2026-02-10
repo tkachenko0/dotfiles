@@ -10,3 +10,4 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 fnm install --lts
+fnm install 20
