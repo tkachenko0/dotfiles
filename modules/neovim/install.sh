@@ -7,7 +7,7 @@ sudo apt install -y ripgrep
 brew install neovim luarocks
 
 rm -rf "$DOTFILES_DIR/../nvim"
-git clone https://github.com/tkachenko0/nvim.git "$DOTFILES_DIR/../nvim"
+git clone git@github.com:tkachenko0/nvim.git "$DOTFILES_DIR/../nvim"
 
 [ -e ~/.config/nvim ] || [ -L ~/.config/nvim ] && rm -rf ~/.config/nvim
 mkdir -p ~/.config

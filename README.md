@@ -11,7 +11,7 @@ passwd viacheslav
 usermod -aG sudo viacheslav
 su - viacheslav
 
-git clone https://github.com/tkachenko0/dotfiles.git ~/dev/personal/dotfiles
+git clone git@github.com:tkachenko0/dotfiles.git
 
 cd ~/dev/personal/dotfiles
 
