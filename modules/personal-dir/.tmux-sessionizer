@@ -4,8 +4,6 @@ BASE_PATH=$(pwd)/..
 
 tmux rename-window todos
 tmux send-keys "cd $BASE_PATH/todos" C-m
-tmux send-keys 'nvim' C-m
 
 tmux new-window -n dotfiles
 tmux send-keys "cd $BASE_PATH/dotfiles" C-m
-tmux send-keys 'nvim' C-m
