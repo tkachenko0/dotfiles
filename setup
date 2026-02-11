@@ -21,6 +21,7 @@ MODULES=(
     "fnm"
     "pyenv"
     "dotnet"
+    "vim"
     "neovim"
     "kiro"
     "scripts"
