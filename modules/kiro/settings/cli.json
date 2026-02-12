@@ -1,3 +1,4 @@
 {
-  "chat.diffTool": "delta   --side-by-side   --syntax-theme 'Visual Studio Dark+'   --dark"
+  "chat.diffTool": "delta   --side-by-side   --syntax-theme 'Visual Studio Dark+'   --dark",
+  "telemetry.enabled": false
 }
