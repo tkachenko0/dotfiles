@@ -12,7 +12,7 @@ if ! command -v fzf &>/dev/null; then
     exit 1
 fi
 
-selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf)
+selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf  --reverse)
 
 [[ -z "$selected" ]] && exit 0
 
