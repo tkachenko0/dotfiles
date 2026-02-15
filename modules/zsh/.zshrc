@@ -81,16 +81,16 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 # Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - zsh)"
 
 # Dotnet
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
+# Other paths
 PATH="$HOME/.local/bin:$PATH"
-
 PATH="$HOME/.cargo/bin:$PATH"
 
 # Plugins
