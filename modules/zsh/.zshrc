@@ -50,6 +50,8 @@ alias k=kubectl
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+export WIN_DIR="/mnt/c/Users/user/Downloads/"
+
 # Scripts
 export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
 
