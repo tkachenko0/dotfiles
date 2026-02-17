@@ -7,4 +7,3 @@ export PATH="$PATH:$BREW_HOME"
 
 brew install git-delta
 
-
