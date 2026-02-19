@@ -19,7 +19,7 @@ selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf --reverse --height 50%)
 project_dir=$(dirname "$selected")
 project_name=$(basename "$project_dir" | tr . _)
 
-tmux_running=$(pgrep tmux)
+tmux_running=$(pgrep tmux || true)
 
 if [[ -z "${TMUX:-}" ]] && [[ -z "$tmux_running" ]]; then
     tmux new-session -s "$project_name" -c "$selected"
