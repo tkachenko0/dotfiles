@@ -27,5 +27,3 @@ read -p "Enter your Git email: " GIT_EMAIL
 export GIT_EMAIL
 
 ./setup all
-
-echo "Installation complete!"
