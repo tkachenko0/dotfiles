@@ -45,6 +45,7 @@ alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
 alias k=kubectl
+alias '??'='kiro-cli chat'
 
 # Environment variables
 export EDITOR="nvim"
