@@ -14,5 +14,4 @@ sudo apt install -y \
     gcc  \
     jq  \
     tree  \
-    unzip \
-    wl-clipboard # Added for nvim clipboard support (otherwise requires poor nvim startup time)
+    unzip
