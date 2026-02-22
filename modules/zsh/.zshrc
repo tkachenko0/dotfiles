@@ -16,7 +16,7 @@ autoload -Uz vcs_info
 precmd() { 
   vcs_info
   if [[ -n "$AWS_PROFILE" ]]; then
-    AWS_INFO=" %F{214}☁  $AWS_PROFILE%f"
+    AWS_INFO=" %F{214}$AWS_PROFILE%f"
   else
     AWS_INFO=""
   fi
