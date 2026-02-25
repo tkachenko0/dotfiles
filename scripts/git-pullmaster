@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
 
 BLUE='\033[0;34m'
@@ -8,22 +7,23 @@ NO_COLOR='\033[0m'
 
 MAX_DEPTH=2
 
-declare -A unique_repos
-current_git_root=""
+repos=()
 
+current_git_root=""
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     current_git_root=$(git rev-parse --show-toplevel)
-    unique_repos["$current_git_root"]=1
+    repos+=("$current_git_root")
 fi
 
 while IFS= read -r gitdir; do
     repo_dir=$(realpath "$(dirname "$gitdir")")
-    if [[ "$repo_dir" != "$current_git_root" ]]; then
-        unique_repos["$repo_dir"]=1
-    fi
+    [[ "$repo_dir" != "$current_git_root" ]] && repos+=("$repo_dir")
 done < <(find . -maxdepth "$MAX_DEPTH" -type d -name ".git")
 
-for repo_dir in "${!unique_repos[@]}"; do
+# Deduplicate
+unique_repos=$(printf "%s\n" "${repos[@]}" | sort -u)
+
+while IFS= read -r repo_dir; do
     cd "$repo_dir" || continue
 
     repo_name=$(basename "$repo_dir")
@@ -33,4 +33,4 @@ for repo_dir in "${!unique_repos[@]}"; do
     git pull || echo -e "\033[0;31mFailed to pull ${repo_name}\033[0m"
 
     cd - > /dev/null || exit 1
-done
+done <<< "$unique_repos"

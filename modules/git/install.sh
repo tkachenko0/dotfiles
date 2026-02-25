@@ -2,8 +2,6 @@
 
 set -e
 
-sudo apt install -y git
-
 if [ -z "$GIT_EMAIL" ]; then
     read -p "Enter your Git email: " git_email
 else
