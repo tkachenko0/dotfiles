@@ -10,6 +10,12 @@ NO_COLOR='\033[0m'
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODULES_DIR="$DOTFILES_DIR/modules"
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 MODULES=(
     "core"
     "git" 
@@ -23,7 +29,6 @@ MODULES=(
     "neovim"
     "kiro"
     "scripts"
-    "aws-cli"
     "personal-dir"
 )
 

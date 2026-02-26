@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 mkdir -p ~/dev/personal/todos
 touch ~/dev/personal/todos/todo.md
 

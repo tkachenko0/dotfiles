@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 curl -fsSL https://cli.kiro.dev/install | bash
 
 KIR_DIR=~/.kiro
