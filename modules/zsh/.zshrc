@@ -12,19 +12,22 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[OA' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+bindkey '^[OB' down-line-or-beginning-search
+
 # Prompt
 autoload -Uz vcs_info
-precmd() { 
+precmd() {
   vcs_info
-  if [[ -n "$AWS_PROFILE" ]]; then
-    AWS_INFO=" %F{214}$AWS_PROFILE%f"
-  else
-    AWS_INFO=""
-  fi
 }
 zstyle ':vcs_info:git:*' formats ' %F{141}%b%f'
 setopt PROMPT_SUBST
-PROMPT='%F{117}%~%f${vcs_info_msg_0_}${AWS_INFO} %F{84}❯%f '
+PROMPT='%F{117}%~%f${vcs_info_msg_0_} %F{84}❯%f '
 
 # Completion
 autoload -Uz compinit && compinit
@@ -32,7 +35,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 bindkey '^[[Z' reverse-menu-complete
 
-#  Aliases
+# Aliases
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
@@ -71,14 +74,6 @@ bindkey '^R' fzf-history-widget
 
 # Vi mode
 bindkey -v
-
-autoload -U up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search
-bindkey '^[OA' up-line-or-beginning-search
-bindkey '^[[B' down-line-or-beginning-search
-bindkey '^[OB' down-line-or-beginning-search
 
 # Node
 FNM_PATH="$HOME/.local/share/fnm"
