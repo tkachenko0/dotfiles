@@ -26,9 +26,6 @@ zstyle ':vcs_info:git:*' formats ' %F{141}%b%f'
 setopt PROMPT_SUBST
 PROMPT='%F{117}%~%f${vcs_info_msg_0_}${AWS_INFO} %F{84}❯%f '
 
-# Auto cd
-setopt AUTO_CD
-
 # Completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
