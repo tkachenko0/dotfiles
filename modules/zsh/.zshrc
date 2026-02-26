@@ -1,6 +1,6 @@
-# Brew
-export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
-export PATH="$BREW_HOME:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # History
 HISTFILE=~/.zsh_history
@@ -29,20 +29,11 @@ zstyle ':vcs_info:git:*' formats ' %F{141}%b%f'
 setopt PROMPT_SUBST
 PROMPT='%F{117}%~%f${vcs_info_msg_0_} %F{84}❯%f '
 
-# Completion
-autoload -Uz compinit && compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-bindkey '^[[Z' reverse-menu-complete
-
 # Aliases
 alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
 alias ls="ls --color=auto"
 alias lsa="ls -la"
 alias gs="git status"
-alias gcm="git commit -m"
 alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
@@ -90,10 +81,6 @@ eval "$(pyenv init - zsh)"
 # Dotnet
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
-
-# Other paths
-PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/.cargo/bin:$PATH"
 
 # Plugins
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
