@@ -12,6 +12,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 
+# Prompt
 autoload -Uz vcs_info
 precmd() { 
   vcs_info
@@ -45,18 +46,15 @@ alias gcm="git commit -m"
 alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
-alias k=kubectl
-
+alias k="kubectl"
 function _ask_ai() {
   kiro-cli chat "$*"
 }
-
 alias "??"="_ask_ai"
 
 # Environment variables
 export EDITOR="nvim"
 export VISUAL="nvim"
-
 export WIN_DIR="/mnt/c/Users/user/Downloads/"
 
 # Scripts
@@ -74,8 +72,8 @@ fzf-history-widget() {
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
 
-autoload -U select-word-style
-select-word-style bash
+# Vi mode
+bindkey -v
 
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
@@ -84,11 +82,6 @@ bindkey '^[[A' up-line-or-beginning-search
 bindkey '^[OA' up-line-or-beginning-search
 bindkey '^[[B' down-line-or-beginning-search
 bindkey '^[OB' down-line-or-beginning-search
-
-bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word
-bindkey '^[[3;3~' kill-word
-bindkey '^[^?' backward-kill-word
 
 # Node
 FNM_PATH="$HOME/.local/share/fnm"
