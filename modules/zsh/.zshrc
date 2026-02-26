@@ -1,6 +1,10 @@
-export PATH="$HOME/.local/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/dev/personal/dotfiles/scripts:$PATH"
+
+# Vi mode
+bindkey -v
 
 # History
 HISTFILE=~/.zsh_history
@@ -38,19 +42,14 @@ alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
 alias k="kubectl"
-function _ask_ai() {
-  kiro-cli chat "$*"
-}
+function _ask_ai() { kiro-cli chat "$*" }
 alias "??"="_ask_ai"
 
 # Environment variables
 export EDITOR="nvim"
 export VISUAL="nvim"
-export WIN_DIR="/mnt/c/Users/user/Downloads/"
 
 # Scripts
-export PATH="$PATH:$HOME/dev/personal/dotfiles/scripts"
-
 bindkey -s '^F' 'tmux-sessionizer\n'        
 bindkey -s '^B' 'git-branch-switcher\n'     
 bindkey -s '^P' 'git-pullmaster\n'          
@@ -62,9 +61,6 @@ fzf-history-widget() {
 }
 zle -N fzf-history-widget
 bindkey '^R' fzf-history-widget
-
-# Vi mode
-bindkey -v
 
 # Node
 FNM_PATH="$HOME/.local/share/fnm"
@@ -85,4 +81,3 @@ export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 # Plugins
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-eval "$(zoxide init zsh)"
