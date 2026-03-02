@@ -24,6 +24,14 @@ bindkey '^[OA' up-line-or-beginning-search
 bindkey '^[[B' down-line-or-beginning-search
 bindkey '^[OB' down-line-or-beginning-search
 
+fzf-history-widget() {
+  BUFFER=$(tac ~/.zsh_history | cut -d';' -f2- | awk '!seen[$0]++' | fzf --no-sort --reverse --query="$BUFFER")
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N fzf-history-widget
+bindkey '^R' fzf-history-widget
+
 # Prompt
 autoload -Uz vcs_info
 precmd() {
@@ -54,13 +62,6 @@ bindkey -s '^F' 'tmux-sessionizer\n'
 bindkey -s '^B' 'git-branch-switcher\n'     
 bindkey -s '^P' 'git-pullmaster\n'          
 bindkey -s '^A' 'git-stash-lister\n'
-fzf-history-widget() {
-  BUFFER=$(tac ~/.zsh_history | cut -d';' -f2- | awk '!seen[$0]++' | fzf --no-sort --reverse --query="$BUFFER")
-  CURSOR=$#BUFFER
-  zle reset-prompt
-}
-zle -N fzf-history-widget
-bindkey '^R' fzf-history-widget
 
 # Node
 FNM_PATH="$HOME/.local/share/fnm"
