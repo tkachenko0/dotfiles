@@ -13,6 +13,7 @@ ZSH_PLUGINS=~/.zsh/plugins
 rm -rf ${ZSH_PLUGINS}
 
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_PLUGINS/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_PLUGINS/zsh-syntax-highlighting
 
 ( [ -e ~/.zshrc ] || [ -L ~/.zshrc ] ) && rm ~/.zshrc
 ln -s "$DOTFILES_DIR/modules/zsh/.zshrc" ~/.zshrc
