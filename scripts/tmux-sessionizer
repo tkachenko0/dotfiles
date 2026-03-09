@@ -19,27 +19,16 @@ selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf --reverse)
 project_dir=$(dirname "$selected")
 project_name=$(basename "$project_dir" | tr . _)
 
-create_session() {
-    local session_name=$1
-    local session_path=$2
-    local config_file=$3
-    
-    tmux new-session -ds "$session_name" -c "$session_path"
-    if [[ -f "$config_file" ]]; then
-        tmux send-keys -t "$session_name" "source $config_file" C-m
-    fi
-}
-
 tmux_running=$(pgrep tmux || true)
 
 if [[ -z "${TMUX:-}" ]] && [[ -z "$tmux_running" ]]; then
-    create_session "$project_name" "$selected" "$project_dir/.tmux-sessionizer"
+    tmux new-session -ds "$project_name" -c "$selected" 
     tmux attach-session -t "$project_name"
     exit 0
 fi
 
 if ! tmux has-session -t "$project_name" 2>/dev/null; then
-    create_session "$project_name" "$selected" "$project_dir/.tmux-sessionizer"
+    tmux new-session -ds "$project_name" -c "$selected" 
 else
     window_index=$(tmux list-windows -t "$project_name" -F "#{window_index}:#{pane_current_path}" | grep ":$selected$" | head -1 | cut -d: -f1)
     if [[ -z "$window_index" ]]; then
