@@ -6,7 +6,7 @@ This repository contains my personal dotfiles and development environment setup.
 curl -fsSL https://raw.githubusercontent.com/tkachenko0/dotfiles/main/install.sh | bash
 ```
 
-For a Docker container with Ubunto 24:
+For a Docker container with Ubuntu 24:
 
 ```bash
 apt update
