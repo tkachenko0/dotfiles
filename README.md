@@ -21,3 +21,8 @@ passwd viacheslav
 usermod -aG sudo viacheslav
 su - viacheslav
 ```
+
+## TODOs
+
+- [ ] update `./windows/glazewm/config.yaml` configuration for GlazeWM
+- [ ] better git workflow
