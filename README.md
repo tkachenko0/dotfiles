@@ -6,3 +6,4 @@ This repository contains my personal dotfiles and development environment setup.
 
 - [ ] update `./windows/glazewm/config.yaml` configuration for GlazeWM
 - [ ] better git workflow
+- [ ] bookmarks from terminal
