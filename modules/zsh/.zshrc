@@ -79,6 +79,13 @@ eval "$(pyenv init - zsh)"
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
+# Completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+bindkey -M menuselect '\t' menu-complete
+bindkey -M menuselect '\e[Z' reverse-menu-complete
+
 # Plugins
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
