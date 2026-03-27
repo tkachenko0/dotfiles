@@ -2,7 +2,16 @@
 set -uo pipefail
 
 MAX_DEPTH=2
-TARGET_DIR=$(realpath "${1:-.}")
+DO_FETCH=false
+
+for arg in "$@"; do
+    case "$arg" in
+        --fetch) DO_FETCH=true ;;
+        *) TARGET_DIR="$arg" ;;
+    esac
+done
+
+TARGET_DIR=$(realpath "${TARGET_DIR:-.}")
 
 output=""
 
@@ -13,6 +22,10 @@ while IFS= read -r gitdir; do
 
     line=$(
         cd "$repo_dir" 2>/dev/null || exit 0
+
+        if $DO_FETCH; then
+            git fetch --quiet --all --prune 2>/dev/null
+        fi
 
         branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "???")
 
