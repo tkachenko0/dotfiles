@@ -6,4 +6,6 @@ This repository contains my personal dotfiles and development environment setup.
 
 - [ ] update `./windows/glazewm/config.yaml` configuration for GlazeWM
 - [ ] better git workflow
-- [ ] bookmarks from terminal
+- [ ] understand lua language for neovim
+- [ ] rebuild neovim setup
+- [ ] update neovim to latest revision

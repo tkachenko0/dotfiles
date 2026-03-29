@@ -46,13 +46,11 @@ alias grep="grep --color=auto"
 alias ls="ls --color=auto"
 alias lsa="ls -la"
 alias gs="git status"
-alias gc="git commit"
 alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
 alias k="kubectl"
-function _ask_ai() { kiro-cli chat "$*" }
-alias "??"="_ask_ai"
+alias "??"="kiro-cli chat"
 
 # Environment variables
 export EDITOR="nvim"
