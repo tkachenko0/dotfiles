@@ -59,7 +59,7 @@ export VISUAL="nvim"
 # Scripts
 bindkey -s '^F' 'tmux-sessionizer\n'        
 bindkey -s '^B' 'git-branch-switcher\n'     
-bindkey -s '^P' 'git-pullmaster\n'          
+bindkey -s '^P' 'git-sync\n'          
 bindkey -s '^A' 'git-stash-lister\n'
 
 # Node

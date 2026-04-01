@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NO_COLOR='\033[0m'
+
+MAX_DEPTH=2
+
+repos=()
+
+current_git_root=""
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    current_git_root=$(git rev-parse --show-toplevel)
+    repos+=("$current_git_root")
+fi
+
+while IFS= read -r gitdir; do
+    repo_dir=$(realpath "$(dirname "$gitdir")")
+    [[ "$repo_dir" != "$current_git_root" ]] && repos+=("$repo_dir")
+done < <(find . -maxdepth "$MAX_DEPTH" -type d -name ".git")
+
+unique_repos=$(printf "%s\n" "${repos[@]}" | sort -u)
+
+while IFS= read -r repo_dir; do
+    cd "$repo_dir" || continue
+
+    repo_name=$(basename "$repo_dir")
+    remote="origin"
+
+    echo -e "Syncing branches in ${BLUE}${repo_name}${NO_COLOR}"
+    if ! git fetch "$remote" 2>/dev/null; then
+        echo -e "  ${YELLOW}failed to fetch${NO_COLOR}"
+        cd - > /dev/null || exit 1
+        continue
+    fi
+
+    current_branch=$(git symbolic-ref --short HEAD)
+
+    while read -r local_branch; do
+        remote_ref="refs/remotes/$remote/$local_branch"
+
+        if ! git show-ref --verify --quiet "$remote_ref"; then
+            continue
+        fi
+
+        local_sha=$(git rev-parse "refs/heads/$local_branch")
+        remote_sha=$(git rev-parse "$remote_ref")
+
+        if [ "$local_sha" = "$remote_sha" ]; then
+            continue
+        fi
+
+        if ! git merge-base --is-ancestor "$local_sha" "$remote_sha"; then
+            echo -e "  ${YELLOW}$local_branch${NO_COLOR} (diverged, needs manual merge)"
+            continue
+        fi
+
+        if [ "$local_branch" = "$current_branch" ]; then
+            git merge --ff-only "$remote_ref" > /dev/null
+        else
+            git update-ref "refs/heads/$local_branch" "$remote_sha" "$local_sha"
+        fi
+
+        echo -e "  ${GREEN}$local_branch${NO_COLOR}"
+        git -c color.ui=always log --oneline "$local_sha".."$remote_sha" | sed 's/^/    /'
+        git -c color.ui=always diff --stat "$local_sha".."$remote_sha" | sed 's/^/    /'
+    done < <(git for-each-ref --format='%(refname:short)' refs/heads/)
+
+    cd - > /dev/null || exit 1
+done <<< "$unique_repos"
