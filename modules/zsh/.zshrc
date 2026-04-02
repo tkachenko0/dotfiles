@@ -6,6 +6,13 @@ export PATH="$HOME/dev/personal/dotfiles/scripts:$PATH"
 # Vi mode
 bindkey -v
 
+# Completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+bindkey -M menuselect '\t' menu-complete
+bindkey -M menuselect '\e[Z' reverse-menu-complete
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -15,7 +22,6 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
-
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
@@ -34,9 +40,7 @@ bindkey '^R' fzf-history-widget
 
 # Prompt
 autoload -Uz vcs_info
-precmd() {
-  vcs_info
-}
+precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats ' %F{141}%b%f'
 setopt PROMPT_SUBST
 PROMPT='%F{117}%~%f${vcs_info_msg_0_} %F{84}❯%f '
@@ -58,8 +62,8 @@ export VISUAL="nvim"
 
 # Scripts
 bindkey -s '^F' 'tmux-sessionizer\n'        
-bindkey -s '^B' 'git-branch-switcher\n'     
 bindkey -s '^P' 'git-sync\n'          
+bindkey -s '^N' 'git-branch-switcher\n'     
 bindkey -s '^A' 'git-stash-lister\n'
 
 # Node
@@ -78,12 +82,6 @@ eval "$(pyenv init - zsh)"
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
-# Completion
-autoload -Uz compinit && compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-bindkey -M menuselect '\t' menu-complete
-bindkey -M menuselect '\e[Z' reverse-menu-complete
 
 # Plugins
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
