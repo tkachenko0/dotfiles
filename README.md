@@ -16,6 +16,22 @@ Then run the setup script:
 ./setup
 ```
 
+## WSL - Docker fix
+
+If `docker pull` fails with:
+
+```
+error getting credentials - err: fork/exec /usr/bin/docker-credential-desktop.exe: exec format error
+```
+
+Remove `credsStore` from `~/.docker/config.json`:
+
+```bash
+sed -i '/"credsStore"/d' ~/.docker/config.json
+```
+
+This happens because Docker Desktop for Windows writes `"credsStore": "desktop.exe"` which doesn't work inside WSL.
+
 ## TODOs
 
 - [ ] update `./windows/glazewm/config.yaml` configuration for GlazeWM
