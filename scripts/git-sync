@@ -8,6 +8,18 @@ NO_COLOR='\033[0m'
 
 MAX_DEPTH=2
 
+get_dirty_status() {
+    local result=""
+    local staged unstaged untracked
+    staged=$(git diff --cached --numstat | wc -l)
+    unstaged=$(git diff --numstat | wc -l)
+    untracked=$(git ls-files --others --exclude-standard | wc -l)
+    [[ "$staged" -gt 0 ]] && result+=" ${GREEN}+${staged} staged${NO_COLOR}"
+    [[ "$unstaged" -gt 0 ]] && result+=" ${YELLOW}~${unstaged} modified${NO_COLOR}"
+    [[ "$untracked" -gt 0 ]] && result+=" ${YELLOW}?${untracked} untracked${NO_COLOR}"
+    echo "$result"
+}
+
 repos=()
 
 current_git_root=""
@@ -31,7 +43,7 @@ while IFS= read -r repo_dir; do
 
     current_branch=$(git symbolic-ref --short HEAD)
 
-    echo -e "${BLUE}${repo_name}${NO_COLOR} on ${GREEN}${current_branch}${NO_COLOR}"
+    echo -e "${BLUE}${repo_name}${NO_COLOR} on ${GREEN}${current_branch}${NO_COLOR}$(get_dirty_status)"
     if ! git fetch "$remote" 2>/dev/null; then
         echo -e "  ${YELLOW}failed to fetch${NO_COLOR}"
         cd - > /dev/null || exit 1
