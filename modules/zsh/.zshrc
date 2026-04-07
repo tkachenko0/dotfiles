@@ -22,21 +22,13 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
-autoload -U up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search
-bindkey '^[OA' up-line-or-beginning-search
-bindkey '^[[B' down-line-or-beginning-search
-bindkey '^[OB' down-line-or-beginning-search
 
-fzf-history-widget() {
-  BUFFER=$(tac ~/.zsh_history | cut -d';' -f2- | awk '!seen[$0]++' | fzf --no-sort --reverse --query="$BUFFER")
-  CURSOR=$#BUFFER
-  zle reset-prompt
-}
-zle -N fzf-history-widget
-bindkey '^R' fzf-history-widget
+for f in \
+  /usr/share/doc/fzf/examples/key-bindings.zsh \
+  /usr/share/fzf/key-bindings.zsh \
+  "$(brew --prefix 2>/dev/null)/opt/fzf/shell/key-bindings.zsh"; do
+  [ -r "$f" ] && source "$f" && break
+done
 
 # Prompt
 autoload -Uz vcs_info
@@ -82,7 +74,5 @@ eval "$(pyenv init - zsh)"
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
-
 # Plugins
-source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
