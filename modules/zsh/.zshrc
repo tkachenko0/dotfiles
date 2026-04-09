@@ -53,8 +53,8 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # Scripts
-bindkey -s '^P' 'tmux-sessionizer\n'        
-bindkey -s '^F' 'git-sync\n'          
+bindkey -s '^F' 'tmux-sessionizer\n'        
+bindkey -s '^P' 'git-sync\n'          
 bindkey -s '^N' 'git-branch-switcher\n'     
 bindkey -s '^A' 'git-stash-lister\n'
 
