@@ -46,7 +46,7 @@ alias gg="git log --graph --oneline --abbrev-commit --decorate"
 alias diff="git diff"
 alias v="nvim"
 alias k="kubectl"
-alias "??"="kiro-cli chat --tui"
+alias "??"="claude"
 
 # Environment variables
 export EDITOR="nvim"
@@ -75,4 +75,5 @@ export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 
 # Plugins
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
