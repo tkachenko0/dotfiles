@@ -14,9 +14,9 @@ get_dirty_status() {
     staged=$(git diff --cached --numstat | wc -l)
     unstaged=$(git diff --numstat | wc -l)
     untracked=$(git ls-files --others --exclude-standard | wc -l)
-    [[ "$staged" -gt 0 ]] && result+=" ${GREEN}+${staged} staged${NO_COLOR}"
-    [[ "$unstaged" -gt 0 ]] && result+=" ${YELLOW}~${unstaged} modified${NO_COLOR}"
-    [[ "$untracked" -gt 0 ]] && result+=" ${YELLOW}?${untracked} untracked${NO_COLOR}"
+    [[ "$staged" -gt 0 ]] && result+="${GREEN}+${staged}${NO_COLOR}"
+    [[ "$unstaged" -gt 0 ]] && result+=" ${YELLOW}~${unstaged}${NO_COLOR}"
+    [[ "$untracked" -gt 0 ]] && result+=" ${YELLOW}?${untracked}${NO_COLOR}"
     echo "$result"
 }
 
@@ -43,7 +43,10 @@ while IFS= read -r repo_dir; do
 
     current_branch=$(git symbolic-ref --short HEAD)
 
-    echo -e "${BLUE}${repo_name}${NO_COLOR} on ${GREEN}${current_branch}${NO_COLOR}$(get_dirty_status)"
+    dirty_status=$(get_dirty_status)
+    line="${BLUE}${repo_name}${NO_COLOR} on ${GREEN}${current_branch}${NO_COLOR}"
+    [[ -n "$dirty_status" ]] && line+=" [$dirty_status]"
+    echo -e "$line"
 
     if [[ -z "$(git remote)" ]]; then
         echo -e "  ${YELLOW}no remotes${NO_COLOR}"
