@@ -44,6 +44,13 @@ while IFS= read -r repo_dir; do
     current_branch=$(git symbolic-ref --short HEAD)
 
     echo -e "${BLUE}${repo_name}${NO_COLOR} on ${GREEN}${current_branch}${NO_COLOR}$(get_dirty_status)"
+
+    if [[ -z "$(git remote)" ]]; then
+        echo -e "  ${YELLOW}no remotes${NO_COLOR}"
+        cd - > /dev/null || exit 1
+        continue
+    fi
+
     if ! git fetch "$remote"; then
         echo -e "  ${YELLOW}failed to fetch${NO_COLOR}"
         cd - > /dev/null || exit 1
