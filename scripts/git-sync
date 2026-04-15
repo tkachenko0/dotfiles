@@ -76,7 +76,7 @@ while IFS= read -r repo_dir; do
         fi
 
         if ! git merge-base --is-ancestor "$local_sha" "$remote_sha"; then
-            echo -e "  ${YELLOW}$local_branch${NO_COLOR} (local not is ancestor of remote)"
+            echo -e "  ${YELLOW}$local_branch${NO_COLOR} (local is not ancestor of remote)"
             continue
         fi
 
