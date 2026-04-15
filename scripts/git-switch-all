@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NO_COLOR='\033[0m'
+
+MAX_DEPTH=2
+
+if [[ $# -lt 1 ]]; then
+    echo "Usage: $(basename "$0") <branch>"
+    exit 1
+fi
+
+target_branch="$1"
+remote="origin"
+
+repos=()
+
+current_git_root=""
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    current_git_root=$(git rev-parse --show-toplevel)
+    repos+=("$current_git_root")
+fi
+
+while IFS= read -r gitdir; do
+    repo_dir=$(realpath "$(dirname "$gitdir")")
+    [[ "$repo_dir" != "$current_git_root" ]] && repos+=("$repo_dir")
+done < <(find . -maxdepth "$MAX_DEPTH" -type d -name ".git")
+
+unique_repos=$(printf "%s\n" "${repos[@]}" | sort -u)
+
+while IFS= read -r repo_dir; do
+    cd "$repo_dir" || continue
+
+    repo_name=$(basename "$repo_dir")
+    current_branch=$(git symbolic-ref --short HEAD 2>/dev/null || echo "DETACHED")
+
+    line="${BLUE}${repo_name}${NO_COLOR} on ${GREEN}${current_branch}${NO_COLOR}"
+    echo -e "$line"
+
+    if [[ "$current_branch" == "$target_branch" ]]; then
+        echo -e "  ${GREEN}already on $target_branch${NO_COLOR}"
+        cd - > /dev/null || exit 1
+        continue
+    fi
+
+    if git show-ref --verify --quiet "refs/heads/$target_branch"; then
+        git -c color.ui=always switch "$target_branch" 2>&1 | sed 's/^/  /' || true
+    elif git show-ref --verify --quiet "refs/remotes/$remote/$target_branch"; then
+        git -c color.ui=always switch --track "$remote/$target_branch" 2>&1 | sed 's/^/  /' || true
+    else
+        echo -e "  ${YELLOW}no branch $target_branch${NO_COLOR}"
+    fi
+
+    cd - > /dev/null || exit 1
+done <<< "$unique_repos"
