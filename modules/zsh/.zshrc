@@ -51,6 +51,7 @@ alias "??"="claude"
 # Environment variables
 export EDITOR="nvim"
 export VISUAL="nvim"
+export WIN_DOWN="/mnt/c/Users/user/Downloads"
 
 # Scripts
 bindkey -s '^F' 'tmux-sessionizer\n'        
