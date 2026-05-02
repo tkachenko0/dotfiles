@@ -12,12 +12,13 @@ if ! command -v fzf &>/dev/null; then
     exit 1
 fi
 
-selected=$(find ~/dev/*/* -maxdepth 0 -type d | fzf)
+selected=$(find -L ~/dev/*/* -maxdepth 0 -type d | fzf)
 
 [[ -z "$selected" ]] && exit 0
 
 project_dir=$(dirname "$selected")
 project_name=$(basename "$project_dir" | tr . _)
+selected_resolved=$(readlink -f "$selected")
 
 tmux_running=$(pgrep tmux || true)
 
@@ -30,7 +31,7 @@ fi
 if ! tmux has-session -t "$project_name" 2>/dev/null; then
     tmux new-session -ds "$project_name" -c "$selected" 
 else
-    window_index=$(tmux list-windows -t "$project_name" -F "#{window_index}:#{pane_current_path}" | grep ":$selected$" | head -1 | cut -d: -f1)
+    window_index=$(tmux list-windows -t "$project_name" -F "#{window_index}:#{pane_current_path}" | grep ":$selected_resolved$" | head -1 | cut -d: -f1)
     if [[ -z "$window_index" ]]; then
         tmux new-window -t "$project_name:" -c "$selected"
     fi
