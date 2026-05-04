@@ -9,6 +9,17 @@ NO_COLOR='\033[0m'
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODULES_DIR="$DOTFILES_DIR/modules"
+ENV_FILE="$DOTFILES_DIR/.env"
+
+if [ ! -f "$ENV_FILE" ]; then
+    echo -e "${RED}Missing .env file at $ENV_FILE — copy .env.example and fill in values${NO_COLOR}"
+    exit 1
+fi
+
+set -a
+source "$ENV_FILE"
+set +a
+export DOTFILES_DIR
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -28,6 +39,7 @@ MODULES=(
     "dotnet"
     "neovim"
     "kiro"
+    "glazewm"
     "scripts"
     "personal-dir"
 )
@@ -43,7 +55,6 @@ run_module() {
     fi
     
     echo -e "${BLUE}Installing $module...${NO_COLOR}"
-    export DOTFILES_DIR
     bash "$module_file"
 }
 

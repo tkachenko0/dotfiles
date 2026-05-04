@@ -2,16 +2,6 @@
 
 set -e
 
-DOTFILES_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
-ENV_FILE="$DOTFILES_DIR/.env"
-
-if [ ! -f "$ENV_FILE" ]; then
-    echo "Missing .env file at $ENV_FILE"
-    exit 1
-fi
-
-source "$ENV_FILE"
-
 required_vars=(GIT_EMAIL GIT_USERNAME GIT_EMAIL_PERSONAL GIT_USERNAME_PERSONAL)
 for var in "${required_vars[@]}"; do
     if [ -z "${!var}" ]; then

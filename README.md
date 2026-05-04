@@ -16,6 +16,10 @@ Then run the setup script:
 ./setup
 ```
 
+## Windows: GlazeWM
+
+[GlazeWM](https://github.com/glzr-io/glazewm) needs to be installed once from Windows:
+
 ## WSL - Docker fix
 
 If `docker pull` fails with:
@@ -34,7 +38,6 @@ This happens because Docker Desktop for Windows writes `"credsStore": "desktop.e
 
 ## TODOs
 
-- [ ] update `./windows/glazewm/config.yaml` configuration for GlazeWM
 - [ ] better git workflow
 - [ ] understand lua language for neovim
 - [ ] rebuild neovim setup
