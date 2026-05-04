@@ -1,1 +1,0 @@
-Please review this code for best practices, security issues, and potential improvements:
