@@ -11,3 +11,9 @@ git add .
 git commit -m 'automated dev commit'
 git push
 popd
+
+pushd ~/dev/personal/second-brain/
+git add .
+git commit -m 'automated dev commit'
+git push
+popd
