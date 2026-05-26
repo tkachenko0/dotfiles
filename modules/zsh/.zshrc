@@ -33,10 +33,18 @@ done
 # Prompt
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr ' %F{84}●%f'      # green dot: staged changes
-zstyle ':vcs_info:git:*' unstagedstr ' %F{220}●%f'   # yellow dot: unstaged changes
-zstyle ':vcs_info:git:*' formats ' %F{141}%b%f%c%u'
-zstyle ':vcs_info:git:*' actionformats ' %F{141}%b%f%c%u'
+zstyle ':vcs_info:git:*' stagedstr ' %F{84}●%f'    
+zstyle ':vcs_info:git:*' unstagedstr ' %F{220}●%f'  
+zstyle ':vcs_info:git:*' formats ' %F{141}%b%f%c%u%m'
+zstyle ':vcs_info:git:*' actionformats ' %F{141}%b%f%c%u%m'
+zstyle ':vcs_info:git*+set-message:*' hooks git-ahead-behind
++vi-git-ahead-behind() {
+  local ahead behind
+  ahead=$(git rev-list --count @{upstream}..HEAD 2>/dev/null)
+  behind=$(git rev-list --count HEAD..@{upstream} 2>/dev/null)
+  (( ahead ))  && hook_com[misc]+=" %F{117}⇡${ahead}%f"   
+  (( behind )) && hook_com[misc]+=" %F{210}⇣${behind}%f" 
+}
 precmd() { vcs_info }
 setopt PROMPT_SUBST
 PROMPT='%F{117}%~%f${vcs_info_msg_0_} %F{84}❯%f '
