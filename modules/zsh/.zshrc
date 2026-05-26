@@ -32,8 +32,12 @@ done
 
 # Prompt
 autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr ' %F{84}●%f'      # green dot: staged changes
+zstyle ':vcs_info:git:*' unstagedstr ' %F{220}●%f'   # yellow dot: unstaged changes
+zstyle ':vcs_info:git:*' formats ' %F{141}%b%f%c%u'
+zstyle ':vcs_info:git:*' actionformats ' %F{141}%b%f%c%u'
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats ' %F{141}%b%f'
 setopt PROMPT_SUBST
 PROMPT='%F{117}%~%f${vcs_info_msg_0_} %F{84}❯%f '
 
