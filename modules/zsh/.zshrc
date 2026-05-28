@@ -64,7 +64,14 @@ alias "??"="claude"
 # Environment variables
 export EDITOR="nvim"
 export VISUAL="nvim"
-export WIN_DOWN="/mnt/c/Users/user/Downloads"
+
+DOTFILES_ENV="$HOME/dev/personal/dotfiles/.env"
+if [ -r "$DOTFILES_ENV" ]; then
+  set -a
+  source "$DOTFILES_ENV"
+  set +a
+fi
+[ -n "$WINDOWS_USERNAME" ] && export WIN_DOWN="/mnt/c/Users/$WINDOWS_USERNAME/Downloads"
 
 # Scripts
 bindkey -s '^F' 'tmux-sessionizer\n'        
