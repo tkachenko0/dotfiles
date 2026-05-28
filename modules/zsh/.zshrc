@@ -91,3 +91,10 @@ export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
 # Plugins
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fnm
+FNM_PATH="/home/via/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --shell zsh)"
+fi
