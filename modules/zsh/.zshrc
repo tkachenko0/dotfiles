@@ -112,7 +112,6 @@ export PATH=/home/via/.opencode/bin:$PATH
 # Pi
 export PATH="/home/via/.local/share/fnm/node-versions/v22.19.0/installation/bin:$PATH"
 
-# Ollama: accensione/spegnimento on-demand del servizio systemd
-# (usare questi, NON 'ollama serve', che avvia un server utente con cartella modelli diversa)
-alias ollama-on='sudo systemctl start ollama && echo "Ollama acceso" && ollama list'
-alias ollama-off='sudo systemctl stop ollama && echo "Ollama spento"'
+# Ollama
+alias ollama-on='sudo systemctl start ollama && ollama list'
+alias ollama-off='sudo systemctl stop ollama'
